@@ -20,6 +20,7 @@ public class MineTrekOres {
 	public static Ore titanium_ore;
 	public static Ore tungsten_ore;
 	public static Ore uranium_ore;
+	public static Ore invisible_ore;
 
 	/**
 	 * Initializes ore blocks
@@ -75,6 +76,9 @@ public class MineTrekOres {
 
 		uranium_ore = new UraniumOre(conf.getBlock("UraniumOre", startID++).getInt());
 		registerOre(uranium_ore, ct, gen);
+
+		invisible_ore = new InvisibleOre(conf.getBlock("InvisibleOre", startID++).getInt());
+		registerOre(invisible_ore, ct, gen);
 
 		return startID;
 	}
