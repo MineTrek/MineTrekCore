@@ -1,0 +1,16 @@
+start.java
+*.cfg
+*.cfg~
+forge_logo.png
+*.info
+*.lzma
+*.properties
+/net/*
+/cpw/*
+/ibxm/*
+/paulscode/*
+/assets/*
+
+!/net/minetrek/
+!/assets/minetrek/
+!README.md
