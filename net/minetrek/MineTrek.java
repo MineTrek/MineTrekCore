@@ -42,8 +42,8 @@ public class MineTrek {
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
 		
+		//Initialize all blocks and items
 		int currID = MineTrekOres.initialize(1701, config, creativeTab, oreGenerator);
-		System.out.println(currID);
 		currID = MineTrekBlocks.initialize(currID, config, creativeTab);
 		MineTrekItems.initialize(20000, config, creativeTab);
 		

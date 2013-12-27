@@ -8,8 +8,8 @@ public class BrassIngot extends Item {
 	public BrassIngot(int par1) {
 		super(par1);
 		setMaxStackSize(64);
-		setUnlocalizedName("dilithiumIngot");
-		setTextureName("minetrek:ingotDilithium");
+		setUnlocalizedName("brassIngot");
+		setTextureName("minetrek:ingotBrass");
 	}
 
 }
