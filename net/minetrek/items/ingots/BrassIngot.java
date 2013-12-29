@@ -1,6 +1,5 @@
 package net.minetrek.items.ingots;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class BrassIngot extends Item {
@@ -10,6 +9,7 @@ public class BrassIngot extends Item {
 		setMaxStackSize(64);
 		setUnlocalizedName("brassIngot");
 		setTextureName("minetrek:ingotBrass");
+
 	}
 
 }
