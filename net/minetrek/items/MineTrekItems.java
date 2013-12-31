@@ -41,8 +41,12 @@ public class MineTrekItems {
 	public static Item tritanium_ingot;
 	public static Item tungsten_ingot;
 	public static Item uranium_ingot;
+	public static Item aluminum_ingot;
 
 	public static int initialize(int startID, Configuration conf, CreativeTabs tab) {
+		aluminum_ingot = new DilithiumIngot(conf.getItem("AluminumIngot", startID++).getInt()).setCreativeTab(tab);
+		LanguageRegistry.addName(aluminum_ingot, "Aluminum Ingot");
+
 		dilithium_ingot = new DilithiumIngot(conf.getItem("DilithiumIngot", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(dilithium_ingot, "Dilithium Ingot");
 

@@ -1,6 +1,7 @@
 package net.minetrek;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minetrek.blocks.MineTrekBlocks;
 import net.minetrek.blocks.ores.MineTrekOres;
@@ -31,22 +32,22 @@ public class MineTrek {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+
 		oreGenerator = new OreGenerator();
 		GameRegistry.registerWorldGenerator(oreGenerator);
-		
+
 		System.out.println("Initializing MineTrek...");
 		creativeTab = new CreativeTabs("MineTrek");
 		// LanguageRegistry.addName(creativeTab, "MineTrek");
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
-		
-		//Initialize all blocks and items
+
+		// Initialize all blocks and items
 		int currID = MineTrekOres.initialize(1701, config, creativeTab, oreGenerator);
 		currID = MineTrekBlocks.initialize(currID, config, creativeTab);
 		MineTrekItems.initialize(20000, config, creativeTab);
-		
+
 		config.save();
 		System.out.println("Finished Initializing MineTrek");
 	}
@@ -54,6 +55,12 @@ public class MineTrek {
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
+
+		GameRegistry.addSmelting(MineTrekOres.bauxite_ore.blockID, new ItemStack(MineTrekItems.aluminum_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.tin_ore.blockID, new ItemStack(MineTrekItems.tin_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.copper_ore.blockID, new ItemStack(MineTrekItems.copper_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.titanium_ore.blockID, new ItemStack(MineTrekItems.titanium_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.tungsten_ore.blockID, new ItemStack(MineTrekItems.tungsten_ingot), 1.0F);
 	}
 
 	@EventHandler
