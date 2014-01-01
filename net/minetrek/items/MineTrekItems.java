@@ -22,6 +22,12 @@ import net.minetrek.items.ingots.TungstenIngot;
 import net.minetrek.items.ingots.UraniumIngot;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
+/**
+ * Contains and initializes all MineTrek Items
+ * 
+ * @author The Numenorean
+ * 
+ */
 public class MineTrekItems {
 
 	public static Item dilithium_ingot;
@@ -42,8 +48,11 @@ public class MineTrekItems {
 	public static Item tungsten_ingot;
 	public static Item uranium_ingot;
 	public static Item aluminum_ingot;
+	public static Item rubble;
 
 	public static int initialize(int startID, Configuration conf, CreativeTabs tab) {
+
+		// Ingots
 		aluminum_ingot = new DilithiumIngot(conf.getItem("AluminumIngot", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(aluminum_ingot, "Aluminum Ingot");
 
@@ -97,6 +106,12 @@ public class MineTrekItems {
 
 		uranium_ingot = new UraniumIngot(conf.getItem("UraniumIngot", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(uranium_ingot, "Uranium Ingot");
+
+		// Dust
+
+		// Others
+		rubble = new Rubble(conf.getItem("rubble", startID++).getInt()).setCreativeTab(tab);
+		LanguageRegistry.addName(rubble, "Rubble");
 
 		return startID;
 

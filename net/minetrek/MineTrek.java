@@ -1,9 +1,11 @@
 package net.minetrek;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minetrek.blocks.MineTrekBlocks;
+import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
 import net.minetrek.blocks.ores.MineTrekOres;
 import net.minetrek.blocks.ores.OreGenerator;
 import net.minetrek.items.MineTrekItems;
@@ -15,6 +17,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = "MineTrek", name = "MineTrek", version = "0.0.1")
@@ -32,6 +35,9 @@ public class MineTrek {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+
+		NetworkRegistry.instance().registerGuiHandler(this, this.proxy);
+		instance = this;
 
 		oreGenerator = new OreGenerator();
 		GameRegistry.registerWorldGenerator(oreGenerator);
@@ -54,13 +60,17 @@ public class MineTrek {
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		proxy.registerRenderers();
+
+		GameRegistry.registerTileEntity(LaserElectronManipulatorTileEntity.class, "laserElectronManipulatorTileEntity");
 
 		GameRegistry.addSmelting(MineTrekOres.bauxite_ore.blockID, new ItemStack(MineTrekItems.aluminum_ingot), 1.0F);
 		GameRegistry.addSmelting(MineTrekOres.tin_ore.blockID, new ItemStack(MineTrekItems.tin_ingot), 1.0F);
 		GameRegistry.addSmelting(MineTrekOres.copper_ore.blockID, new ItemStack(MineTrekItems.copper_ingot), 1.0F);
 		GameRegistry.addSmelting(MineTrekOres.titanium_ore.blockID, new ItemStack(MineTrekItems.titanium_ingot), 1.0F);
 		GameRegistry.addSmelting(MineTrekOres.tungsten_ore.blockID, new ItemStack(MineTrekItems.tungsten_ingot), 1.0F);
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestone), new ItemStack(MineTrekItems.rubble), new ItemStack(
+				MineTrekItems.rubble));
+		proxy.registerRenderers();
 	}
 
 	@EventHandler
