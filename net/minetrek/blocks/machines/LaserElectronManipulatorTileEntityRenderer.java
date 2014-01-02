@@ -40,29 +40,35 @@ public class LaserElectronManipulatorTileEntityRenderer extends TileEntitySpecia
 
 	// And this method actually renders your tile entity
 	public void renderBlock(LaserElectronManipulatorTileEntity tl, World world, int i, int j, int k, Block block) {
-		Tessellator tessellator = Tessellator.instance;
-		// This will make your block brightness dependent from surroundings
-		// lighting.
-		float f = block.getBlockBrightness(world, i, j, k);
-		int l = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
-		int l1 = l % 65536;
-		int l2 = l / 65536;
-		tessellator.setColorOpaque_F(f, f, f);
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, l1, l2);
 
-		/*
-		 * This will rotate your model corresponding to player direction that
-		 * was when you placed the block. If you want this to work, add these
-		 * lines to onBlockPlacedBy method in your block class. int dir =
-		 * MathHelper.floor_double((double)((player.rotationYaw * 4F) / 360F) +
-		 * 0.5D) & 3; world.setBlockMetadataWithNotify(x, y, z, dir, 0);
-		 */
+		int dir = 0;
+		if (world != null && world.blockExists(i, j, k)) {
+			Tessellator tessellator = Tessellator.instance;
+			// This will make your block brightness dependent from surroundings
+			// lighting.
+			float f = block.getBlockBrightness(world, i, j, k);
+			int l = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
+			int l1 = l % 65536;
+			int l2 = l / 65536;
+			tessellator.setColorOpaque_F(f, f, f);
+			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, l1, l2);
 
-		int dir = world.getBlockMetadata(i, j, k);
+			/*
+			 * This will rotate your model corresponding to player direction
+			 * that was when you placed the block. If you want this to work, add
+			 * these lines to onBlockPlacedBy method in your block class. int
+			 * dir = MathHelper.floor_double((double)((player.rotationYaw * 4F)
+			 * / 360F) + 0.5D) & 3; world.setBlockMetadataWithNotify(x, y, z,
+			 * dir, 0);
+			 */
+
+			// This is my horrible way of checking if it is a block or not.
+
+			dir = world.getBlockMetadata(i, j, k);
+		}
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0.5F, 0.18F, 0.5F);
-		// This line actually rotates the renderer.
 		GL11.glRotatef(-180F, 0F, 0F, 1F);
 		GL11.glRotatef(dir * (-90F), 0F, 1F, 0F);
 		this.bindTexture(new ResourceLocation("minetrek", "textures/blocks/laserElectronManipulator.png"));
@@ -70,5 +76,4 @@ public class LaserElectronManipulatorTileEntityRenderer extends TileEntitySpecia
 
 		GL11.glPopMatrix();
 	}
-
 }
