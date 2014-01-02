@@ -1,4 +1,4 @@
-package net.minetrek.blocks.ores;
+package MineTrekCore.net.minetrek.blocks.ores;
 
 import java.util.Random;
 

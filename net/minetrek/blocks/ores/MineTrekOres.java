@@ -1,4 +1,4 @@
-package net.minetrek.blocks.ores;
+package MineTrekCore.net.minetrek.blocks.ores;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;

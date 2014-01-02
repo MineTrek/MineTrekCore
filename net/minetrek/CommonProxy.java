@@ -1,4 +1,4 @@
-package net.minetrek;
+package MineTrekCore.net.minetrek;
 
 public class CommonProxy {
 

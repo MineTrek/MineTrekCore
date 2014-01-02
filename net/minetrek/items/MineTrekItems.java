@@ -1,25 +1,10 @@
-package net.minetrek.items;
+package MineTrekCore.net.minetrek.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
-import net.minetrek.items.ingots.BrassIngot;
-import net.minetrek.items.ingots.BronzeIngot;
-import net.minetrek.items.ingots.ChromiumIngot;
-import net.minetrek.items.ingots.CopperIngot;
-import net.minetrek.items.ingots.DilithiumIngot;
-import net.minetrek.items.ingots.DuraniumIngot;
-import net.minetrek.items.ingots.InvisibleIngot;
-import net.minetrek.items.ingots.IridiumIngot;
-import net.minetrek.items.ingots.PlatinumIngot;
-import net.minetrek.items.ingots.PlutoniumIngot;
-import net.minetrek.items.ingots.SiliconIngot;
-import net.minetrek.items.ingots.SteelIngot;
-import net.minetrek.items.ingots.TinIngot;
-import net.minetrek.items.ingots.TitaniumIngot;
-import net.minetrek.items.ingots.TritaniumIngot;
-import net.minetrek.items.ingots.TungstenIngot;
-import net.minetrek.items.ingots.UraniumIngot;
+import MineTrekCore.net.minetrek.items.*;
+import MineTrekCore.net.minetrek.items.ingots.*;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class MineTrekItems {
@@ -42,6 +27,7 @@ public class MineTrekItems {
 	public static Item tungsten_ingot;
 	public static Item uranium_ingot;
 	public static Item aluminum_ingot;
+	public static Item latinum;
 
 	public static int initialize(int startID, Configuration conf, CreativeTabs tab) {
 		aluminum_ingot = new DilithiumIngot(conf.getItem("AluminumIngot", startID++).getInt()).setCreativeTab(tab);
@@ -49,6 +35,9 @@ public class MineTrekItems {
 
 		dilithium_ingot = new DilithiumIngot(conf.getItem("DilithiumIngot", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(dilithium_ingot, "Dilithium Ingot");
+		
+		latinum = new Latinum(conf.getItem("Latinum", startID++).getInt()).setCreativeTab(tab);
+		LanguageRegistry.addName(latinum, "Latinum");
 
 		bronze_ingot = new BronzeIngot(conf.getItem("BronzeIngot", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(bronze_ingot, "Bronze Ingot");

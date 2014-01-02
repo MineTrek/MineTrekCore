@@ -1,4 +1,4 @@
-package net.minetrek.blocks;
+package MineTrekCore.net.minetrek.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -8,6 +8,7 @@ import net.minecraftforge.common.Configuration;
 public class MineTrekBlocks {
 
 	public static Block transparent_aluminum;
+	public static Block dabo_wheel;
 
 	/**
 	 * Initializes non-ore blocks
@@ -26,6 +27,8 @@ public class MineTrekBlocks {
 		transparent_aluminum = new TransparentAlmuninum(conf.getBlock(
 				"TransparentAluminum", startID++).getInt()).setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparentAluminum");
+		
+		dabo_wheel = new DaboWheel(conf.getBlock("DaboWheel", startID++).getInt()).setCreativeTab(ct).setBlockUnbreakable();
 		return startID;
 	}
 

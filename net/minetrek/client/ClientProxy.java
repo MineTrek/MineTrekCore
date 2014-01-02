@@ -1,7 +1,7 @@
-package net.minetrek.client;
+package MineTrekCore.net.minetrek.client;
 
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.minetrek.CommonProxy;
+import MineTrekCore.net.minetrek.CommonProxy;
 
 public class ClientProxy extends CommonProxy {
         

@@ -1,4 +1,4 @@
-package net.minetrek.items.ingots;
+package MineTrekCore.net.minetrek.items.ingots;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

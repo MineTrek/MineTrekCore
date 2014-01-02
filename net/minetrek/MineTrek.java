@@ -1,12 +1,12 @@
-package net.minetrek;
+package MineTrekCore.net.minetrek;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
-import net.minetrek.blocks.MineTrekBlocks;
-import net.minetrek.blocks.ores.MineTrekOres;
-import net.minetrek.blocks.ores.OreGenerator;
-import net.minetrek.items.MineTrekItems;
+import MineTrekCore.net.minetrek.blocks.MineTrekBlocks;
+import MineTrekCore.net.minetrek.blocks.ores.MineTrekOres;
+import MineTrekCore.net.minetrek.blocks.ores.OreGenerator;
+import MineTrekCore.net.minetrek.items.MineTrekItems;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
