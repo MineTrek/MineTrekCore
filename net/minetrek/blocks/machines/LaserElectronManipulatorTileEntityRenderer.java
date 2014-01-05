@@ -62,8 +62,6 @@ public class LaserElectronManipulatorTileEntityRenderer extends TileEntitySpecia
 			 * dir, 0);
 			 */
 
-			// This is my horrible way of checking if it is a block or not.
-
 			dir = world.getBlockMetadata(i, j, k);
 		}
 
