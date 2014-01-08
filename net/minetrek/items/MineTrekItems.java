@@ -49,6 +49,7 @@ public class MineTrekItems {
 	public static Item uranium_ingot;
 	public static Item aluminum_ingot;
 	public static Item rubble;
+	public static Item dilithium_crystal;
 
 	public static int initialize(int startID, Configuration conf, CreativeTabs tab) {
 
@@ -110,8 +111,11 @@ public class MineTrekItems {
 		// Dust
 
 		// Others
-		rubble = new Rubble(conf.getItem("rubble", startID++).getInt()).setCreativeTab(tab);
+		rubble = new Rubble(conf.getItem("Rubble", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(rubble, "Rubble");
+		
+		dilithium_crystal = new DilithiumCrystal(conf.getItem("DilithiumCrystal", startID++).getInt()).setCreativeTab(tab);
+		LanguageRegistry.addName(dilithium_crystal, "Dilithium Crystal");
 
 		return startID;
 
