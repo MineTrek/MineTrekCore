@@ -19,6 +19,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = "MineTrek", name = "MineTrek", version = "0.0.1")
 @NetworkMod(clientSideRequired = true)
@@ -43,14 +44,17 @@ public class MineTrek {
 		GameRegistry.registerWorldGenerator(oreGenerator);
 
 		System.out.println("Initializing MineTrek...");
-		creativeTab = new CreativeTabs("MineTrek");
-		// LanguageRegistry.addName(creativeTab, "MineTrek");
+		creativeTab = new MineTrekCreativeTab("MineTrek");
+		LanguageRegistry.instance().addStringLocalization("itemGroup.MineTrek",
+				"MineTrek");
 
-		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration config = new Configuration(
+				event.getSuggestedConfigurationFile());
 		config.load();
 
 		// Initialize all blocks and items
-		int currID = MineTrekOres.initialize(1701, config, creativeTab, oreGenerator);
+		int currID = MineTrekOres.initialize(1701, config, creativeTab,
+				oreGenerator);
 		currID = MineTrekBlocks.initialize(currID, config, creativeTab);
 		MineTrekItems.initialize(20000, config, creativeTab);
 
@@ -61,15 +65,23 @@ public class MineTrek {
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
 
-		GameRegistry.registerTileEntity(LaserElectronManipulatorTileEntity.class, "laserElectronManipulatorTileEntity");
+		GameRegistry.registerTileEntity(
+				LaserElectronManipulatorTileEntity.class,
+				"laserElectronManipulatorTileEntity");
 
-		GameRegistry.addSmelting(MineTrekOres.bauxite_ore.blockID, new ItemStack(MineTrekItems.aluminum_ingot), 1.0F);
-		GameRegistry.addSmelting(MineTrekOres.tin_ore.blockID, new ItemStack(MineTrekItems.tin_ingot), 1.0F);
-		GameRegistry.addSmelting(MineTrekOres.copper_ore.blockID, new ItemStack(MineTrekItems.copper_ingot), 1.0F);
-		GameRegistry.addSmelting(MineTrekOres.titanium_ore.blockID, new ItemStack(MineTrekItems.titanium_ingot), 1.0F);
-		GameRegistry.addSmelting(MineTrekOres.tungsten_ore.blockID, new ItemStack(MineTrekItems.tungsten_ingot), 1.0F);
-		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestone), new ItemStack(MineTrekItems.rubble), new ItemStack(
-				MineTrekItems.rubble));
+		GameRegistry.addSmelting(MineTrekOres.bauxite_ore.blockID,
+				new ItemStack(MineTrekItems.aluminum_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.tin_ore.blockID, new ItemStack(
+				MineTrekItems.tin_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.copper_ore.blockID,
+				new ItemStack(MineTrekItems.copper_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.titanium_ore.blockID,
+				new ItemStack(MineTrekItems.titanium_ingot), 1.0F);
+		GameRegistry.addSmelting(MineTrekOres.tungsten_ore.blockID,
+				new ItemStack(MineTrekItems.tungsten_ingot), 1.0F);
+		GameRegistry.addShapelessRecipe(new ItemStack(Block.cobblestone),
+				new ItemStack(MineTrekItems.rubble), new ItemStack(
+						MineTrekItems.rubble));
 		proxy.registerRenderers();
 	}
 
