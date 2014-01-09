@@ -23,6 +23,7 @@ public class LaserElectronManipulator extends BlockContainer {
 		setUnlocalizedName("laserElectronManipulator");
 		LanguageRegistry.addName(this, "Laser Electron Manipulator");
 		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
+		setTextureName("minetrek:laserElectronManipulator");
 	}
 
 	@Override
