@@ -3,6 +3,7 @@ package net.minetrek.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.Refinery;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -18,6 +19,8 @@ public class MineTrekBlocks {
 	public static Block transparent_aluminum;
 	public static Block refinery;
 	public static Block laser_electron_manipulator;
+	public static Fluid antimatter_fluid;
+	public static Block antimatter_fluid_block;
 
 	/**
 	 * Initializes non-ore blocks
@@ -32,15 +35,24 @@ public class MineTrekBlocks {
 	 * @return The last id that wasn't used
 	 */
 	public static int initialize(int startID, Configuration conf, CreativeTabs ct) {
-		transparent_aluminum = new TransparentAlmuninum(conf.getBlock("TransparentAluminum", startID++).getInt()).setCreativeTab(ct);
-		GameRegistry.registerBlock(transparent_aluminum, "transparentAluminum");
 
+		// Liquids
+		antimatter_fluid = new AntimatterFluid();
+
+		antimatter_fluid_block = new BlockAntimatter(conf.getBlock("AntimatterFluidBlock", startID++).getInt()).setCreativeTab(ct);
+		GameRegistry.registerBlock(antimatter_fluid_block, "antimatterFluidBlock");
+
+		// Machines
 		refinery = new Refinery(conf.getBlock("Refinery", startID++).getInt()).setCreativeTab(ct);
 		GameRegistry.registerBlock(refinery, "refinery");
 
 		laser_electron_manipulator = new LaserElectronManipulator(conf.getBlock("LaserElectronManipulator", startID++).getInt())
 				.setCreativeTab(ct);
 		GameRegistry.registerBlock(laser_electron_manipulator, "laserElectronManipulator");
+
+		// Others
+		transparent_aluminum = new TransparentAlmuninum(conf.getBlock("TransparentAluminum", startID++).getInt()).setCreativeTab(ct);
+		GameRegistry.registerBlock(transparent_aluminum, "transparentAluminum");
 
 		return startID;
 	}

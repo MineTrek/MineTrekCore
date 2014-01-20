@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 import net.minetrek.blocks.MineTrekBlocks;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
 import net.minetrek.blocks.ores.MineTrekOres;
@@ -40,6 +41,8 @@ public class MineTrek {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		NetworkRegistry.instance().registerGuiHandler(this, this.proxy);
+
+		MinecraftForge.EVENT_BUS.register(new SoundLoader());
 		instance = this;
 
 		oreGenerator = new OreGenerator();

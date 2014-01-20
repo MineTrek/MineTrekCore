@@ -29,13 +29,12 @@ public class EntityPhaserBolt extends EntityThrowable {
 	private void init() {
 
 		setVelocity(this.motionX *= 2, this.motionY *= 2, this.motionZ *= 2);
-
 	}
 
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
 		if (mop.entityHit != null)
-			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 5);
+			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10);
 		else {
 			worldObj.destroyBlock(mop.blockX, mop.blockY, mop.blockZ, true);
 		}
@@ -50,24 +49,6 @@ public class EntityPhaserBolt extends EntityThrowable {
 	@Override
 	public void onUpdate() {
 
-		double lastX = this.posX;
-		double lastY = this.posY;
-		double lastZ = this.posZ;
-
-		double x = motionX, y = motionY, z = motionZ;
-
 		super.onUpdate();
-
-		setVelocity(z, y, z);
-
-		this.posX = lastX + x;
-		this.posY = lastY + y;
-		this.posZ = lastZ + z;
-
-		this.setPosition(this.posX, this.posY, this.posZ);
-
-		if (this.ticksExisted > 200) {
-			this.setDead();
-		}
 	}
 }

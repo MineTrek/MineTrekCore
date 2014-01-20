@@ -21,10 +21,9 @@ public class Phaser extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack is, World par2World, EntityPlayer par3EntityPlayer) {
 
-		System.out.println("sdf");
 		if (par3EntityPlayer.capabilities.isCreativeMode || is.getItemDamage() < this.getMaxDamage()) {
 			is.attemptDamageItem(2, new Random());
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			par2World.playSoundAtEntity(par3EntityPlayer, "minetrek:phaser", 1.0F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			if (!par2World.isRemote) {
 				par2World.spawnEntityInWorld(new EntityPhaserBolt(par2World, par3EntityPlayer));
 			}
