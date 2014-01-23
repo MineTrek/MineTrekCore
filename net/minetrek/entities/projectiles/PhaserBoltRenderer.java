@@ -54,15 +54,24 @@ public class PhaserBoltRenderer extends Render {
 		GL11.glTranslatef(-4.0F, 0.0F, 0.0F);
 		GL11.glNormal3f(f10, 0.0F, 0.0F);
 
+		double len = 180D;
+
+		System.out.println(entity.throwe);
+
+		if (entity.throwe != null)
+			len = entity.getDistanceToEntity(entity.throwe);
+
+		System.out.println(len);
+
 		for (int i = 0; i < 4; ++i) {
 			GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);
 			GL11.glNormal3f(0.0F, 0.0F, f10);
 			tessellator.startDrawingQuads();
 			tessellator.setColorRGBA(red, green, blue, alpha);
-			tessellator.addVertex(-180.0D, -2.0D, 0.0D);
-			tessellator.addVertex(180.0D, -2.0D, 0.0D);
-			tessellator.addVertex(180.0D, 2.0D, 0.0D);
-			tessellator.addVertex(-180.0D, 2.0D, 0.0D);
+			tessellator.addVertex(-len, -2.0D, 0.0D);
+			tessellator.addVertex(len, -2.0D, 0.0D);
+			tessellator.addVertex(len, 2.0D, 0.0D);
+			tessellator.addVertex(-len, 2.0D, 0.0D);
 			tessellator.draw();
 		}
 

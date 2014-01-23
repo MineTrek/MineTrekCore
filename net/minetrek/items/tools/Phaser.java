@@ -23,7 +23,7 @@ public class Phaser extends Item {
 
 		if (par3EntityPlayer.capabilities.isCreativeMode || is.getItemDamage() < this.getMaxDamage()) {
 			is.attemptDamageItem(2, new Random());
-			par2World.playSoundAtEntity(par3EntityPlayer, "minetrek:phaser", 1.0F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			par2World.playSoundAtEntity(par3EntityPlayer, "minetrek:phaser", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			if (!par2World.isRemote) {
 				par2World.spawnEntityInWorld(new EntityPhaserBolt(par2World, par3EntityPlayer));
 			}

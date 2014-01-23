@@ -1,5 +1,6 @@
 package net.minetrek.entities.projectiles;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
@@ -8,7 +9,7 @@ import net.minecraft.world.World;
 
 public class EntityPhaserBolt extends EntityThrowable {
 
-	private int ticksInAir;
+	public EntityLivingBase throwe;
 
 	public EntityPhaserBolt(World par1World) {
 		super(par1World);
@@ -16,8 +17,9 @@ public class EntityPhaserBolt extends EntityThrowable {
 		init();
 	}
 
-	public EntityPhaserBolt(World par1World, EntityLivingBase par2EntityLivingBase) {
-		super(par1World, par2EntityLivingBase);
+	public EntityPhaserBolt(World par1World, EntityLivingBase entity) {
+		super(par1World, entity);
+		throwe = entity;
 		init();
 	}
 
@@ -28,7 +30,8 @@ public class EntityPhaserBolt extends EntityThrowable {
 
 	private void init() {
 
-		setVelocity(this.motionX *= 2, this.motionY *= 2, this.motionZ *= 2);
+		System.out.println("Called");
+		setVelocity(this.motionX * 3, this.motionY * 3, this.motionZ * 3);
 	}
 
 	@Override
@@ -36,7 +39,10 @@ public class EntityPhaserBolt extends EntityThrowable {
 		if (mop.entityHit != null)
 			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10);
 		else {
-			worldObj.destroyBlock(mop.blockX, mop.blockY, mop.blockZ, true);
+			float hd = Block.blocksList[worldObj.getBlockId(mop.blockX, mop.blockY, mop.blockZ)].getBlockHardness(worldObj, mop.blockX,
+					mop.blockY, mop.blockZ);
+			if (hd < 4.0F && hd > -1)
+				worldObj.destroyBlock(mop.blockX, mop.blockY, mop.blockZ, true);
 		}
 		this.setDead();
 	}
@@ -48,7 +54,10 @@ public class EntityPhaserBolt extends EntityThrowable {
 
 	@Override
 	public void onUpdate() {
-
 		super.onUpdate();
+
+		if (super.ticksExisted > 30)
+			this.setDead();
+
 	}
 }
