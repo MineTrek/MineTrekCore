@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minetrek.MineTrek;
 import cpw.mods.fml.common.network.FMLNetworkHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class LaserElectronManipulator extends BlockContainer {
@@ -24,6 +25,8 @@ public class LaserElectronManipulator extends BlockContainer {
 		LanguageRegistry.addName(this, "Laser Electron Manipulator");
 		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
 		setTextureName("minetrek:laserElectronManipulator");
+
+		GameRegistry.registerTileEntity(LaserElectronManipulatorTileEntity.class, "laserElectronManipulatorTileEntity");
 	}
 
 	@Override

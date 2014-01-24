@@ -1,8 +1,5 @@
 package net.minetrek.client;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minetrek.CommonProxy;
 import net.minetrek.blocks.MineTrekBlocks;
@@ -25,19 +22,6 @@ public class ClientProxy extends CommonProxy {
 				new LaserElectronManipulatorItemRenderer());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBolt.class, new PhaserBoltRenderer());
-	}
-
-	@Override
-	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity != null) {
-			switch (ID) {
-			case 0:
-
-			}
-		}
-
-		return null;
 	}
 
 }
