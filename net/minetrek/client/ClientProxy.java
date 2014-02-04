@@ -6,6 +6,12 @@ import net.minetrek.blocks.MineTrekBlocks;
 import net.minetrek.blocks.machines.LaserElectronManipulatorItemRenderer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntityRenderer;
+import net.minetrek.blocks.machines.PhaserDrillItemRenderer;
+import net.minetrek.blocks.machines.PhaserDrillTileEntity;
+import net.minetrek.blocks.machines.PhaserDrillTileEntityRenderer;
+import net.minetrek.blocks.power.ElectricCableItemRenderer;
+import net.minetrek.blocks.power.ElectricCableTileEntity;
+import net.minetrek.blocks.power.ElectricCableTileEntityRenderer;
 import net.minetrek.entities.projectiles.EntityPhaserBolt;
 import net.minetrek.entities.projectiles.PhaserBoltRenderer;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -20,6 +26,12 @@ public class ClientProxy extends CommonProxy {
 				new LaserElectronManipulatorTileEntityRenderer());
 		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.laser_electron_manipulator.blockID,
 				new LaserElectronManipulatorItemRenderer());
+
+		ClientRegistry.bindTileEntitySpecialRenderer(PhaserDrillTileEntity.class, new PhaserDrillTileEntityRenderer());
+		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.phaser_drill.blockID, new PhaserDrillItemRenderer());
+
+		ClientRegistry.bindTileEntitySpecialRenderer(ElectricCableTileEntity.class, new ElectricCableTileEntityRenderer());
+		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.electric_cable.blockID, new ElectricCableItemRenderer());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBolt.class, new PhaserBoltRenderer());
 	}

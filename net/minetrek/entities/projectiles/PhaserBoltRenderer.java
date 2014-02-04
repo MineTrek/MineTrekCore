@@ -56,10 +56,10 @@ public class PhaserBoltRenderer extends Render {
 
 		double len = 180D;
 
-		System.out.println(entity.throwe);
+		System.out.println(entity + " " + entity.throwe);
 
 		if (entity.throwe != null)
-			len = entity.getDistanceToEntity(entity.throwe);
+			len = entity.throwe.getDistanceToEntity(entity) * 17;
 
 		System.out.println(len);
 

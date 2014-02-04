@@ -5,7 +5,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
+import net.minetrek.blocks.machines.PhaserDrill;
 import net.minetrek.blocks.machines.Refinery;
+import net.minetrek.blocks.power.ElectricCable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -21,6 +23,8 @@ public class MineTrekBlocks {
 	public static Block laser_electron_manipulator;
 	public static Fluid antimatter_fluid;
 	public static Block antimatter_fluid_block;
+	public static Block phaser_drill;
+	public static Block electric_cable;
 
 	/**
 	 * Initializes non-ore blocks
@@ -50,9 +54,15 @@ public class MineTrekBlocks {
 				.setCreativeTab(ct);
 		GameRegistry.registerBlock(laser_electron_manipulator, "laserElectronManipulator");
 
+		phaser_drill = new PhaserDrill(conf.getBlock("PhaserDrill", startID++).getInt()).setCreativeTab(ct);
+		GameRegistry.registerBlock(phaser_drill, "phaserDrill");
+
 		// Others
 		transparent_aluminum = new TransparentAlmuninum(conf.getBlock("TransparentAluminum", startID++).getInt()).setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparentAluminum");
+
+		electric_cable = new ElectricCable(conf.getBlock("ElectricCable", startID++).getInt()).setCreativeTab(ct);
+		GameRegistry.registerBlock(electric_cable, "electricCable");
 
 		return startID;
 	}

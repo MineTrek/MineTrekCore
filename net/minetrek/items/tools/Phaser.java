@@ -7,6 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minetrek.entities.projectiles.EntityPhaserBolt;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Phaser extends Item {
 
@@ -18,6 +20,7 @@ public class Phaser extends Item {
 		setMaxDamage(100);
 	}
 
+	@SideOnly(Side.CLIENT)
 	@Override
 	public ItemStack onItemRightClick(ItemStack is, World par2World, EntityPlayer par3EntityPlayer) {
 
