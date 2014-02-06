@@ -23,30 +23,30 @@ public class ElectricCableModel extends ModelBase {
 		Main_connector.setTextureSize(64, 32);
 		Main_connector.mirror = true;
 		setRotation(Main_connector, 0F, 0F, 0F);
-		Side1 = new ModelRenderer(this, 32, 0);
-		Side1.addBox(0F, 0F, 0F, 4, 3, 8);
-		Side1.setRotationPoint(-8F, 0F, -4F);
-		Side1.setTextureSize(64, 32);
-		Side1.mirror = true;
-		setRotation(Side1, 0F, 0F, 0F);
 		Side2 = new ModelRenderer(this, 32, 0);
 		Side2.addBox(0F, 0F, 0F, 4, 3, 8);
-		Side2.setRotationPoint(4F, 0F, -4F);
+		Side2.setRotationPoint(-8F, 0F, -4F);
 		Side2.setTextureSize(64, 32);
 		Side2.mirror = true;
 		setRotation(Side2, 0F, 0F, 0F);
+		Side4 = new ModelRenderer(this, 32, 0);
+		Side4.addBox(0F, 0F, 0F, 4, 3, 8);
+		Side4.setRotationPoint(4F, 0F, -4F);
+		Side4.setTextureSize(64, 32);
+		Side4.mirror = true;
+		setRotation(Side4, 0F, 0F, 0F);
 		Side3 = new ModelRenderer(this, 0, 11);
 		Side3.addBox(0F, 0F, 0F, 8, 3, 4);
 		Side3.setRotationPoint(-4F, 0F, 4F);
 		Side3.setTextureSize(64, 32);
 		Side3.mirror = true;
 		setRotation(Side3, 0F, 0F, 0F);
-		Side4 = new ModelRenderer(this, 0, 11);
-		Side4.addBox(0F, 0F, 0F, 8, 3, 4);
-		Side4.setRotationPoint(-4F, 0F, -8F);
-		Side4.setTextureSize(64, 32);
-		Side4.mirror = true;
-		setRotation(Side4, 0F, 0F, 0F);
+		Side1 = new ModelRenderer(this, 0, 11);
+		Side1.addBox(0F, 0F, 0F, 8, 3, 4);
+		Side1.setRotationPoint(-4F, 0F, -8F);
+		Side1.setTextureSize(64, 32);
+		Side1.mirror = true;
+		setRotation(Side1, 0F, 0F, 0F);
 	}
 
 	@Override

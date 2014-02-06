@@ -51,23 +51,43 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 			tessellator.setColorOpaque_F(f, f, f);
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, l1, l2);
 
-			for (int side = 0; i < 6; i++) {
+			for (int side = 0; side < 6; side++) {
 
 				if (tl.isAttached(side)) {
 
 					GL11.glPushMatrix();
-					GL11.glTranslatef(0.5F, 0.18F, 0.5F);
+					GL11.glTranslatef(0.5F, 0.0F, 0.5F);
 
-					if (side == 1)
-						GL11.glRotatef(-180F, 0F, 0F, 1F);
-
-					if (side > 1 || side < 6) {
+					switch (side) {
+					case 0:
+						GL11.glRotatef(180F, 0F, 0F, 1F);
+						GL11.glTranslatef(0F, -1F, 0F);
+						break;
+					case 1:
+						break;
+					case 2:
 						GL11.glRotatef(-90F, 1.0F, 0F, 0F);
-						GL11.glRotatef((side - 2) * -90F, 0F, 0F, 1F);
+						GL11.glTranslatef(0F, -0.5F, 0.5F);
+						break;
+					case 3:
+						GL11.glRotatef(90F, 1.0F, 0F, 0F);
+						GL11.glTranslatef(0F, -0.5F, -0.5F);
+						break;
+					case 4:
+						GL11.glRotatef(90F, 0F, 0F, 1.0F);
+						GL11.glTranslatef(0.5F, -0.5F, 0F);
+						break;
+					case 5:
+						GL11.glRotatef(-90F, 0F, 0F, 1.0F);
+						GL11.glTranslatef(-0.5F, -0.5F, 0F);
+						break;
 					}
 
 					this.bindTexture(new ResourceLocation("minetrek", "textures/blocks/electricCable.png"));
-					model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+
+					boolean[] dirs = tl.getAttachedDirections(side);
+
+					model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F, dirs[0], dirs[3], dirs[1], dirs[2]);
 
 					GL11.glPopMatrix();
 
@@ -88,5 +108,4 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 		}
 
 	}
-
 }

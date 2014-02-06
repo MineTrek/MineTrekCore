@@ -40,14 +40,31 @@ public class ElectricCable extends BlockContainer {
 
 	@Override
 	public int onBlockPlaced(World w, int x, int y, int z, int side, float xLox, float yLoc, float zLoc, int meta) {
-		super.onBlockPlaced(w, x, y, z, side, xLox, yLoc, zLoc, meta);
 		TileEntity te = w.getBlockTileEntity(x, y, z);
 
 		if (te != null && te instanceof ElectricCableTileEntity) {
-			((ElectricCableTileEntity) te).addAttachedSide(side);
+			((ElectricCableTileEntity) te).setAttachedSide(side, true);
 		}
-		System.out.println(te);
-		return 0;
+		return side;
+	}
+
+	@Override
+	public void onBlockAdded(World w, int x, int y, int z) {
+		super.onBlockAdded(w, x, y, z);
+		TileEntity te = w.getBlockTileEntity(x, y, z);
+
+		if (te != null && te instanceof ElectricCableTileEntity) {
+			((ElectricCableTileEntity) te).setAttachedSide(w.getBlockMetadata(x, y, z), true);
+			((ElectricCableTileEntity) te).checkConnections(w, x, y, z);
+		}
+	}
+
+	@Override
+	public void onNeighborBlockChange(World w, int x, int y, int z, int id) {
+		TileEntity te = w.getBlockTileEntity(x, y, z);
+		if (te != null && te instanceof ElectricCableTileEntity) {
+			((ElectricCableTileEntity) te).checkConnections(w, x, y, z);
+		}
 	}
 
 	@Override
