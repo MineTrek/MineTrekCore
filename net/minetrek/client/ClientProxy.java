@@ -9,6 +9,9 @@ import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntityRenderer;
 import net.minetrek.blocks.machines.PhaserDrillItemRenderer;
 import net.minetrek.blocks.machines.PhaserDrillTileEntity;
 import net.minetrek.blocks.machines.PhaserDrillTileEntityRenderer;
+import net.minetrek.blocks.machines.RadioisotopicGeneratorItemRenderer;
+import net.minetrek.blocks.machines.RadioisotopicGeneratorTileEntity;
+import net.minetrek.blocks.machines.RadioisotopicGeneratorTileEntityRenderer;
 import net.minetrek.blocks.power.ElectricCableItemRenderer;
 import net.minetrek.blocks.power.ElectricCableTileEntity;
 import net.minetrek.blocks.power.ElectricCableTileEntityRenderer;
@@ -26,6 +29,10 @@ public class ClientProxy extends CommonProxy {
 				new LaserElectronManipulatorTileEntityRenderer());
 		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.laser_electron_manipulator.blockID,
 				new LaserElectronManipulatorItemRenderer());
+
+		ClientRegistry
+				.bindTileEntitySpecialRenderer(RadioisotopicGeneratorTileEntity.class, new RadioisotopicGeneratorTileEntityRenderer());
+		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.radioisotopic_generator.blockID, new RadioisotopicGeneratorItemRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(PhaserDrillTileEntity.class, new PhaserDrillTileEntityRenderer());
 		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.phaser_drill.blockID, new PhaserDrillItemRenderer());

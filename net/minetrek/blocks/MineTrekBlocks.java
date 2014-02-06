@@ -6,6 +6,7 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.PhaserDrill;
+import net.minetrek.blocks.machines.RadioisotopicGenerator;
 import net.minetrek.blocks.machines.Refinery;
 import net.minetrek.blocks.power.ElectricCable;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -25,6 +26,7 @@ public class MineTrekBlocks {
 	public static Block antimatter_fluid_block;
 	public static Block phaser_drill;
 	public static Block electric_cable;
+	public static Block radioisotopic_generator;
 
 	/**
 	 * Initializes non-ore blocks
@@ -53,6 +55,10 @@ public class MineTrekBlocks {
 		laser_electron_manipulator = new LaserElectronManipulator(conf.getBlock("LaserElectronManipulator", startID++).getInt())
 				.setCreativeTab(ct);
 		GameRegistry.registerBlock(laser_electron_manipulator, "laserElectronManipulator");
+
+		radioisotopic_generator = new RadioisotopicGenerator(conf.getBlock("RadioisotopicGenerator", startID++).getInt())
+				.setCreativeTab(ct);
+		GameRegistry.registerBlock(radioisotopic_generator, "radioisotopicGenerator");
 
 		phaser_drill = new PhaserDrill(conf.getBlock("PhaserDrill", startID++).getInt()).setCreativeTab(ct);
 		GameRegistry.registerBlock(phaser_drill, "phaserDrill");

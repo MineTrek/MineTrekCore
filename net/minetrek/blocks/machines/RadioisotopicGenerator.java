@@ -10,29 +10,29 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
 import cpw.mods.fml.common.network.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class LaserElectronManipulator extends BlockContainer {
+public class RadioisotopicGenerator extends BlockContainer {
 
-	public LaserElectronManipulator(int par1) {
+	public RadioisotopicGenerator(int par1) {
 		super(par1, Material.iron);
 		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("laserElectronManipulator");
-		LanguageRegistry.addName(this, "Laser Electron Manipulator");
-		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
-		setTextureName("minetrek:laserElectronManipulator");
+		setUnlocalizedName("radioisotropticGenerator");
+		LanguageRegistry.addName(this, "RadioisotropicGenerator");
+		setTextureName("minetrek:radioisotropticGeneratorOff");
 
-		GameRegistry.registerTileEntity(LaserElectronManipulatorTileEntity.class, "laserElectronManipulatorTileEntity");
+		setBlockBounds(0F, 0F, 0F, 1.0F, 2.0F, 1.0F);
+
+		GameRegistry.registerTileEntity(RadioisotopicGeneratorTileEntity.class, "radioisotropticGeneratorTileEntity");
 	}
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
-		return new LaserElectronManipulatorTileEntity();
+		return new RadioisotopicGeneratorTileEntity();
 	}
 
 	@Override
@@ -52,17 +52,22 @@ public class LaserElectronManipulator extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new LaserElectronManipulatorTileEntity();
-	}
-
-	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.LASER_ELECTRON_MANIPULATOR_GUI, world, x, y, z);
+			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.RADIOISOTROPIC_GENERATOR_GUI, world, x, y, z);
 		}
+
+		RadioisotopicGeneratorTileEntity te = ((RadioisotopicGeneratorTileEntity) world.getBlockTileEntity(x, y, z));
+
+		te.setStatus(!te.isOn());
 
 		return true;
 
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
