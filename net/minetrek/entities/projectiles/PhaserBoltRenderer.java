@@ -40,7 +40,7 @@ public class PhaserBoltRenderer extends Render {
 		int red = 255;
 		int green = 0;
 		int blue = 0;
-		int alpha = 220;
+		int alpha = 230;
 
 		tessellator.setColorRGBA(red, green, blue, alpha);
 
@@ -59,7 +59,7 @@ public class PhaserBoltRenderer extends Render {
 		System.out.println(entity + " " + entity.throwe);
 
 		if (entity.throwe != null)
-			len = entity.throwe.getDistanceToEntity(entity) * 17;
+			len = entity.throwe.getDistanceToEntity(entity) * 17.5;
 
 		System.out.println(len);
 
