@@ -3,6 +3,7 @@ package net.minetrek.items;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.Configuration;
+import net.minetrek.items.ingots.AluminumIngot;
 import net.minetrek.items.ingots.BrassIngot;
 import net.minetrek.items.ingots.BronzeIngot;
 import net.minetrek.items.ingots.ChromiumIngot;
@@ -57,7 +58,7 @@ public class MineTrekItems {
 	public static int initialize(int startID, Configuration conf, CreativeTabs tab) {
 
 		// Ingots
-		aluminum_ingot = new DilithiumIngot(conf.getItem("AluminumIngot", startID++).getInt()).setCreativeTab(tab);
+		aluminum_ingot = new AluminumIngot(conf.getItem("AluminumIngot", startID++).getInt()).setCreativeTab(tab);
 		LanguageRegistry.addName(aluminum_ingot, "Aluminum Ingot");
 
 		dilithium_ingot = new DilithiumIngot(conf.getItem("DilithiumIngot", startID++).getInt()).setCreativeTab(tab);

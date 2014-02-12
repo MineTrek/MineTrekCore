@@ -3,7 +3,7 @@ package net.minetrek.blocks.machines;
 import java.util.ArrayList;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -18,16 +18,18 @@ import universalelectricity.api.energy.IEnergyContainer;
 import universalelectricity.api.energy.IEnergyInterface;
 import universalelectricity.api.vector.Vector3;
 
-public class LaserElectronManipulatorTileEntity extends TileEntity implements IInventory, IEnergyInterface, IEnergyContainer {
+public class LaserElectronManipulatorTileEntity extends TileEntity implements ISidedInventory, IEnergyInterface, IEnergyContainer {
 
 	private final ItemStack[] inventory;
 	public EnergyStorageHandler energy;
 	private final ArrayList<ForgeDirection> outputDirections;
 
+	private static final ArrayList<ItemStack> recipeIngredients = new ArrayList<ItemStack>(), recipeProducts = new ArrayList<ItemStack>();
+
 	public LaserElectronManipulatorTileEntity() {
 		super();
 
-		inventory = new ItemStack[9];
+		inventory = new ItemStack[2];
 		energy = new EnergyStorageHandler(1000);
 
 		outputDirections = new ArrayList<ForgeDirection>();
@@ -81,6 +83,9 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements II
 
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
+
+		System.out.println(itemstack);
+
 		inventory[i] = itemstack;
 		if (itemstack != null && itemstack.stackSize > getInventoryStackLimit()) {
 			itemstack.stackSize = getInventoryStackLimit();
@@ -121,7 +126,8 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements II
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return true;
+		System.out.println(i + " " + itemstack);
+		return itemstack == null || (i != 1 && recipeIngredients.contains(itemstack));
 	}
 
 	@Override
@@ -200,6 +206,33 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements II
 		}
 
 		return usedEnergy;
+	}
+
+	public static void addRecipe(ItemStack in, ItemStack out) {
+		recipeIngredients.add(in);
+		recipeProducts.add(out);
+	}
+
+	@Override
+	public int[] getAccessibleSlotsFromSide(int var1) {
+		int[] tmp = new int[1];
+		if (var1 == 4)
+			tmp[0] = 0;
+		else if (var1 == 5)
+			tmp[0] = 1;
+		else
+			tmp = new int[0];
+		return tmp;
+	}
+
+	@Override
+	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+		return isItemValidForSlot(i, itemstack);
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
+		return true;
 	}
 
 }
