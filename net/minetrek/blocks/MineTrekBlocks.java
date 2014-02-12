@@ -8,6 +8,7 @@ import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.PhaserDrill;
 import net.minetrek.blocks.machines.RadioisotopicGenerator;
 import net.minetrek.blocks.machines.Refinery;
+import net.minetrek.blocks.machines.replicator.Replicator;
 import net.minetrek.blocks.power.ElectricCable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -27,6 +28,7 @@ public class MineTrekBlocks {
 	public static Block phaser_drill;
 	public static Block electric_cable;
 	public static Block radioisotopic_generator;
+	public static Block replicator;
 
 	/**
 	 * Initializes non-ore blocks
@@ -62,6 +64,9 @@ public class MineTrekBlocks {
 
 		phaser_drill = new PhaserDrill(conf.getBlock("PhaserDrill", startID++).getInt()).setCreativeTab(ct);
 		GameRegistry.registerBlock(phaser_drill, "phaserDrill");
+
+		replicator = new Replicator(conf.getBlock("Replicator", startID++).getInt()).setCreativeTab(ct);
+		GameRegistry.registerBlock(replicator, "replicator");
 
 		// Others
 		transparent_aluminum = new TransparentAlmuninum(conf.getBlock("TransparentAluminum", startID++).getInt()).setCreativeTab(ct);
