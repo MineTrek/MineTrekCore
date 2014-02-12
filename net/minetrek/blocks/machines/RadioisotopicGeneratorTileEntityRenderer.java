@@ -53,15 +53,6 @@ public class RadioisotopicGeneratorTileEntityRenderer extends TileEntitySpecialR
 			tessellator.setColorOpaque_F(f, f, f);
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, l1, l2);
 
-			/*
-			 * This will rotate your model corresponding to player direction
-			 * that was when you placed the block. If you want this to work, add
-			 * these lines to onBlockPlacedBy method in your block class. int
-			 * dir = MathHelper.floor_double((double)((player.rotationYaw * 4F)
-			 * / 360F) + 0.5D) & 3; world.setBlockMetadataWithNotify(x, y, z,
-			 * dir, 0);
-			 */
-
 			dir = world.getBlockMetadata(i, j, k);
 		}
 

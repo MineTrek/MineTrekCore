@@ -53,7 +53,7 @@ public class PhaserDrillTileEntityRenderer extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0.5F, 1.44F, 0.5F);
 		GL11.glRotatef(-180F, 0F, 0F, 1F);
-		GL11.glRotatef(dir * (-90F), 0F, 1F, 0F);
+		GL11.glRotatef(dir * (90F), 0F, 1F, 0F);
 		this.bindTexture(new ResourceLocation("minetrek", "textures/blocks/phaserDrill.png"));
 		model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 

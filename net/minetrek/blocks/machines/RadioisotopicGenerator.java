@@ -22,17 +22,12 @@ public class RadioisotopicGenerator extends BlockContainer {
 		super(par1, Material.iron);
 		setStepSound(Block.soundMetalFootstep);
 		setUnlocalizedName("radioisotropticGenerator");
-		LanguageRegistry.addName(this, "RadioisotropicGenerator");
+		LanguageRegistry.addName(this, "Radioisotropic Generator");
 		setTextureName("minetrek:radioisotropticGeneratorOff");
 
 		setBlockBounds(0F, 0F, 0F, 1.0F, 2.0F, 1.0F);
 
 		GameRegistry.registerTileEntity(RadioisotopicGeneratorTileEntity.class, "radioisotropticGeneratorTileEntity");
-	}
-
-	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
-		return new RadioisotopicGeneratorTileEntity();
 	}
 
 	@Override
@@ -54,7 +49,7 @@ public class RadioisotopicGenerator extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.RADIOISOTROPIC_GENERATOR_GUI, world, x, y, z);
+			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.RADIOISOTOPIC_GENERATOR_GUI, world, x, y, z);
 		}
 
 		RadioisotopicGeneratorTileEntity te = ((RadioisotopicGeneratorTileEntity) world.getBlockTileEntity(x, y, z));
@@ -67,7 +62,6 @@ public class RadioisotopicGenerator extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
-		return null;
+		return new RadioisotopicGeneratorTileEntity();
 	}
 }

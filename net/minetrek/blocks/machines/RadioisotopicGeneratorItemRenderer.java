@@ -6,12 +6,6 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class RadioisotopicGeneratorItemRenderer implements IItemRenderer {
 
-	private final RadioisotopicGeneratorModel model;
-
-	public RadioisotopicGeneratorItemRenderer() {
-		model = new RadioisotopicGeneratorModel();
-	}
-
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		return true;

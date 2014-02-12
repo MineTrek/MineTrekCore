@@ -1,5 +1,7 @@
 package net.minetrek.blocks.machines;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -9,15 +11,29 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.ForgeDirection;
+import universalelectricity.api.CompatibilityModule;
+import universalelectricity.api.energy.EnergyStorageHandler;
+import universalelectricity.api.energy.IEnergyContainer;
+import universalelectricity.api.energy.IEnergyInterface;
+import universalelectricity.api.vector.Vector3;
 
-public class LaserElectronManipulatorTileEntity extends TileEntity implements IInventory {
+public class LaserElectronManipulatorTileEntity extends TileEntity implements IInventory, IEnergyInterface, IEnergyContainer {
 
 	private final ItemStack[] inventory;
+	public EnergyStorageHandler energy;
+	private final ArrayList<ForgeDirection> outputDirections;
 
 	public LaserElectronManipulatorTileEntity() {
 		super();
 
 		inventory = new ItemStack[9];
+		energy = new EnergyStorageHandler(1000);
+
+		outputDirections = new ArrayList<ForgeDirection>();
+		for (ForgeDirection fd : ForgeDirection.values())
+			if (!fd.equals(ForgeDirection.UNKNOWN))
+				outputDirections.add(fd);
 	}
 
 	@Override
@@ -138,6 +154,52 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements II
 				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
 			}
 		}
+	}
+
+	@Override
+	public boolean canConnect(ForgeDirection arg0) {
+		return true;
+	}
+
+	@Override
+	public long getEnergy(ForgeDirection arg0) {
+		return energy.getEnergy();
+	}
+
+	@Override
+	public long getEnergyCapacity(ForgeDirection arg0) {
+		return energy.getEnergyCapacity();
+	}
+
+	@Override
+	public void setEnergy(ForgeDirection arg0, long arg1) {
+		energy.setEnergy(arg1);
+	}
+
+	@Override
+	public long onExtractEnergy(ForgeDirection arg0, long arg1, boolean arg2) {
+		return energy.extractEnergy(arg1, arg2);
+	}
+
+	@Override
+	public long onReceiveEnergy(ForgeDirection arg0, long arg1, boolean arg2) {
+		return produce(energy.receiveEnergy(arg1, arg2), arg0);
+	}
+
+	protected long produce(long outputEnergy, ForgeDirection arg0) {
+		long usedEnergy = 0;
+
+		for (ForgeDirection direction : outputDirections) {
+			if (outputEnergy > 0 && !direction.equals(arg0)) {
+				TileEntity tileEntity = new Vector3(this).translate(direction).getTileEntity(this.worldObj);
+
+				if (tileEntity != null) {
+					usedEnergy += CompatibilityModule.receiveEnergy(tileEntity, direction.getOpposite(), outputEnergy, true);
+				}
+			}
+		}
+
+		return usedEnergy;
 	}
 
 }

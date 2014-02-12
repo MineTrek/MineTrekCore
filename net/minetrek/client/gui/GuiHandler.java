@@ -13,7 +13,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 public class GuiHandler implements IGuiHandler {
 
 	public static final int LASER_ELECTRON_MANIPULATOR_GUI = 0;
-	public static final int RADIOISOTROPIC_GENERATOR_GUI = 1;
+	public static final int RADIOISOTOPIC_GENERATOR_GUI = 1;
+	public static final int REPLICATOR_GUI = 2;
 
 	public GuiHandler() {
 		NetworkRegistry.instance().registerGuiHandler(MineTrek.instance, this);

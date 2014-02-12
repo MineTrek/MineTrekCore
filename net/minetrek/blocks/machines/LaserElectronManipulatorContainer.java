@@ -27,11 +27,8 @@ public class LaserElectronManipulatorContainer extends Container {
 		}
 
 		// Test Inventory
-		for (int y = 0; y < 3; y++) {
-			for (int x = 0; x < 3; x++) {
-				addSlotToContainer(new Slot(entity, x + y * 3, 62 + x * 18, 17 + y * 18));
-			}
-		}
+		addSlotToContainer(new Slot(entity, 0, 76, 51));
+		addSlotToContainer(new Slot(entity, 1, 128, 51));
 
 	}
 

@@ -12,6 +12,9 @@ import net.minetrek.blocks.machines.PhaserDrillTileEntityRenderer;
 import net.minetrek.blocks.machines.RadioisotopicGeneratorItemRenderer;
 import net.minetrek.blocks.machines.RadioisotopicGeneratorTileEntity;
 import net.minetrek.blocks.machines.RadioisotopicGeneratorTileEntityRenderer;
+import net.minetrek.blocks.machines.replicator.ReplicatorItemRenderer;
+import net.minetrek.blocks.machines.replicator.ReplicatorTileEntity;
+import net.minetrek.blocks.machines.replicator.ReplicatorTileEntityRenderer;
 import net.minetrek.blocks.power.ElectricCableItemRenderer;
 import net.minetrek.blocks.power.ElectricCableTileEntity;
 import net.minetrek.blocks.power.ElectricCableTileEntityRenderer;
@@ -39,6 +42,9 @@ public class ClientProxy extends CommonProxy {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(ElectricCableTileEntity.class, new ElectricCableTileEntityRenderer());
 		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.electric_cable.blockID, new ElectricCableItemRenderer());
+
+		ClientRegistry.bindTileEntitySpecialRenderer(ReplicatorTileEntity.class, new ReplicatorTileEntityRenderer());
+		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.replicator.blockID, new ReplicatorItemRenderer());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBolt.class, new PhaserBoltRenderer());
 	}
