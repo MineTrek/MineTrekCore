@@ -1,8 +1,51 @@
-tile.bauxiteOre.name=
-tile.chromiteOre.name=
-tile.copperOre.name=
-tile.dilithiumOre.name=
-tile.duraniumOre.name=
-tile.Ore.name=
-tile.Ore.name=
-tile.Ore.name=
+tile.bauxiteOre.name=Bauxite Ore
+tile.chromiteOre.name=Chromite Ore
+tile.copperOre.name=Copper Ore
+tile.dilithiumOre.name=Dilithium Ore
+tile.duraniumOre.name=Duranium Ore
+tile.invisibleOre.name=Invisible Ore
+tile.iridiumOre.name=Iridium Ore
+tile.nitriumOre.name=Nitrium Ore
+tile.platinumOre.name=Platinum Ore
+tile.plutoniumOre.name=Plutonium Ore
+tile.siliconOre.name=Silicon Ore
+tile.tinOre.name=Tin Ore
+tile.titaniumOre.name=Titanium Ore
+tile.tritaniumOre.name=Tritanium Ore
+tile.tungstenOre.name=Tungsten Ore
+tile.uraniumOre.name=Uranium Ore
+
+tile.transparentAluminum.name=Transparent Aluminum
+
+tile.laserElectronManipulator.name=Laser Electron Manipulator
+tile.phaserDrill.name=Phaser Drill
+tile.radioisotopicGenerator.name=Radioisotopic Generator
+tile.replicator.name=Replicator
+tile.refinery.name=Refinery
+
+tile.electricCable.name=Electric Cable
+
+item.aluminumIngot.name=Aluminum Ingot
+item.brassIngot.name=Brass Ingot
+item.bronzeIngot.name=Bronze Ingot
+item.chromiumIngot.name=Chromium Ingot
+item.copperIngot.name=Copper Ingot
+item.dilithiumIngot.name=Dilithium Ingot
+item.duraniumIngot.name=Duranium Ingot
+item.invisibleIngot.name=Invisible Ingot
+item.iridiumIngot.name=Iridium Ingot
+item.platinumIngot.name=Platinum Ingot
+item.plutoniumIngot.name=Plutonium Ingot
+item.siliconIngot.name=Silicon Ingot
+item.steelIngot.name=Steel Ingot
+item.tinIngot.name=Tin Ingot
+item.titaniumIngot.name=Titanium Ingot
+item.tritaniumIngot.name=Tritanium Ingot
+item.tungstenIngot.name=Tungsten Ingot
+item.uraniumIngot.name=Uranium Ingot
+
+item.dilithiumCrystal.name=Dilithium Crystal
+item.rubble.name=Rubble
+item.smallAntimatterStorage.name=Small Antimatter Storage
+
+item.phaser.name=Phaser
