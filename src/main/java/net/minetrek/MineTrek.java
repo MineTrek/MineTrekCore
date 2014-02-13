@@ -1,8 +1,10 @@
 package net.minetrek;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minetrek.blocks.MineTrekBlocks;
 import net.minetrek.blocks.ores.MineTrekOres;
 import net.minetrek.blocks.ores.OreGenerator;
@@ -10,20 +12,19 @@ import net.minetrek.client.gui.GuiHandler;
 import net.minetrek.entities.projectiles.EntityPhaserBolt;
 import net.minetrek.items.MineTrekItems;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "MineTrek", name = "MineTrek", version = "0.0.1")
-@NetworkMod(clientSideRequired = true)
+@Mod(modid = MineTrek.MODID, version = MineTrek.VERSION)
 public class MineTrek {
+
+	public static final String MODID = "minetrek";
+	public static final String VERSION = "0.0.1";
 
 	@Instance(value = "MineTrek")
 	public static MineTrek instance;
@@ -34,7 +35,6 @@ public class MineTrek {
 	public static CreativeTabs creativeTab;
 	public static OreGenerator oreGenerator;
 
-	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println("Initializing MineTrek...");
 
@@ -44,36 +44,28 @@ public class MineTrek {
 		instance = this;
 
 		oreGenerator = new OreGenerator();
-		GameRegistry.registerWorldGenerator(oreGenerator);
+		GameRegistry.registerWorldGenerator(oreGenerator, 2);
 
 		creativeTab = new MineTrekCreativeTab("MineTrek");
-		LanguageRegistry.instance().addStringLocalization("itemGroup.MineTrek", "MineTrek");
+		// LanguageRegistry.instance().addStringLocalization("itemGroup.MineTrek","MineTrek");
 
-		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		Configuration config = new Configuration(
+				event.getSuggestedConfigurationFile());
 		config.load();
+		config.save();
 
 		// Initialize all blocks and items
-		int currID = MineTrekOres.initialize(1701, config, creativeTab, oreGenerator);
-		currID = MineTrekBlocks.initialize(currID, config, creativeTab);
-		MineTrekItems.initialize(20000, config, creativeTab);
+		MineTrekOres.initialize(creativeTab, oreGenerator);
+		MineTrekBlocks.initialize(creativeTab);
+		MineTrekItems.initialize(creativeTab);
 
-		EntityRegistry
-				.registerModEntity(EntityPhaserBolt.class, "PhaserBolt", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 1, true);
-
-		config.save();
-		System.out.println("Finished Initializing MineTrek");
-	}
-
-	@EventHandler
-	public void load(FMLInitializationEvent event) {
+		EntityRegistry.registerModEntity(EntityPhaserBolt.class, "PhaserBolt",
+				EntityRegistry.findGlobalUniqueEntityId(), this, 64, 1, true);
 
 		RecipeManager.addRecipes();
 		proxy.registerRenderers();
-	}
 
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		// Stub Method
+		System.out.println("Finished Initializing MineTrek");
 	}
 
 }

@@ -1,8 +1,8 @@
 package net.minetrek.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.Icon;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import cpw.mods.fml.relauncher.Side;
@@ -11,16 +11,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockAntimatter extends BlockFluidClassic {
 
 	public BlockAntimatter(int id) {
-		super(id, MineTrekBlocks.antimatter_fluid, Material.water);
+		super(MineTrekBlocks.antimatter_fluid, Material.water);
 
-		this.setLightValue(1.0f);
-		this.setTextureName("minetrek:antimatter");
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
-		return Block.waterMoving.getIcon(side, meta);
+		this.setLightLevel(1.0f);
+		this.setBlockTextureName("minetrek:antimatter");
 	}
 
 	@Override

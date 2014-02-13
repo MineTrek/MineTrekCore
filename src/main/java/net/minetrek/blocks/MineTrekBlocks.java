@@ -2,7 +2,7 @@ package net.minetrek.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.PhaserDrill;
@@ -42,40 +42,38 @@ public class MineTrekBlocks {
 	 *            this way)
 	 * @return The last id that wasn't used
 	 */
-	public static int initialize(int startID, Configuration conf, CreativeTabs ct) {
+	public static void initialize(CreativeTabs ct) {
 
 		// Liquids
 		antimatter_fluid = new AntimatterFluid();
 
-		antimatter_fluid_block = new BlockAntimatter(conf.getBlock("AntimatterFluidBlock", startID++).getInt()).setCreativeTab(ct);
+		antimatter_fluid_block = new BlockAntimatter().setCreativeTab(ct);
 		GameRegistry.registerBlock(antimatter_fluid_block, "antimatterFluidBlock");
 
 		// Machines
-		refinery = new Refinery(conf.getBlock("Refinery", startID++).getInt()).setCreativeTab(ct);
+		refinery = new Refinery().setCreativeTab(ct);
 		GameRegistry.registerBlock(refinery, "refinery");
 
-		laser_electron_manipulator = new LaserElectronManipulator(conf.getBlock("LaserElectronManipulator", startID++).getInt())
+		laser_electron_manipulator = new LaserElectronManipulator()
 				.setCreativeTab(ct);
 		GameRegistry.registerBlock(laser_electron_manipulator, "laserElectronManipulator");
 
-		radioisotopic_generator = new RadioisotopicGenerator(conf.getBlock("RadioisotopicGenerator", startID++).getInt())
+		radioisotopic_generator = new RadioisotopicGenerator()
 				.setCreativeTab(ct);
 		GameRegistry.registerBlock(radioisotopic_generator, "radioisotopicGenerator");
 
-		phaser_drill = new PhaserDrill(conf.getBlock("PhaserDrill", startID++).getInt()).setCreativeTab(ct);
+		phaser_drill = new PhaserDrill().setCreativeTab(ct);
 		GameRegistry.registerBlock(phaser_drill, "phaserDrill");
 
-		replicator = new Replicator(conf.getBlock("Replicator", startID++).getInt()).setCreativeTab(ct);
+		replicator = new Replicator().setCreativeTab(ct);
 		GameRegistry.registerBlock(replicator, "replicator");
 
 		// Others
-		transparent_aluminum = new TransparentAlmuninum(conf.getBlock("TransparentAluminum", startID++).getInt()).setCreativeTab(ct);
+		transparent_aluminum = new TransparentAlmuninum().setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparentAluminum");
 
-		electric_cable = new ElectricCable(conf.getBlock("ElectricCable", startID++).getInt()).setCreativeTab(ct);
+		electric_cable = new ElectricCable().setCreativeTab(ct);
 		GameRegistry.registerBlock(electric_cable, "electricCable");
-
-		return startID;
 	}
 
 }

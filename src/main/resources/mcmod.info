@@ -1,0 +1,16 @@
+[
+{
+  "modid": "minetrek",
+  "name": "Mine Trek",
+  "description": "To go where no Steve has ever gone.... before",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["TheNumenorean"],
+  "credits": "Star Trek",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
