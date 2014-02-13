@@ -32,7 +32,7 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 		 * not match to render coordinates (d, etc) that are calculated as [true
 		 * coordinates] - [player coordinates (camera coordinates)]
 		 */
-		renderBlock(tileEntityYour, tileEntity.worldObj, tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord,
+		renderBlock(tileEntityYour, tileEntity.getWorldObj(), tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord,
 				MineTrekBlocks.electric_cable);
 		GL11.glPopMatrix();
 
@@ -44,7 +44,7 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 			Tessellator tessellator = Tessellator.instance;
 			// This will make your block brightness dependent from surroundings
 			// lighting.
-			float f = block.getBlockBrightness(world, i, j, k);
+			float f = block.getLightValue(world, i, j, k);
 			int l = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
 			int l1 = l % 65536;
 			int l2 = l / 65536;

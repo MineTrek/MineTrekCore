@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAntimatter extends BlockFluidClassic {
 
-	public BlockAntimatter(int id) {
+	public BlockAntimatter() {
 		super(MineTrekBlocks.antimatter_fluid, Material.water);
 
 		this.setLightLevel(1.0f);

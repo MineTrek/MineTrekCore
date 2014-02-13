@@ -1,5 +1,6 @@
 package net.minetrek.client;
 
+import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minetrek.CommonProxy;
 import net.minetrek.blocks.MineTrekBlocks;
@@ -30,21 +31,21 @@ public class ClientProxy extends CommonProxy {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(LaserElectronManipulatorTileEntity.class,
 				new LaserElectronManipulatorTileEntityRenderer());
-		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.laser_electron_manipulator.blockID,
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MineTrekBlocks.laser_electron_manipulator),
 				new LaserElectronManipulatorItemRenderer());
 
 		ClientRegistry
 				.bindTileEntitySpecialRenderer(RadioisotopicGeneratorTileEntity.class, new RadioisotopicGeneratorTileEntityRenderer());
-		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.radioisotopic_generator.blockID, new RadioisotopicGeneratorItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MineTrekBlocks.radioisotopic_generator), new RadioisotopicGeneratorItemRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(PhaserDrillTileEntity.class, new PhaserDrillTileEntityRenderer());
-		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.phaser_drill.blockID, new PhaserDrillItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MineTrekBlocks.phaser_drill), new PhaserDrillItemRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(ElectricCableTileEntity.class, new ElectricCableTileEntityRenderer());
-		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.electric_cable.blockID, new ElectricCableItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MineTrekBlocks.electric_cable), new ElectricCableItemRenderer());
 
 		ClientRegistry.bindTileEntitySpecialRenderer(ReplicatorTileEntity.class, new ReplicatorTileEntityRenderer());
-		MinecraftForgeClient.registerItemRenderer(MineTrekBlocks.replicator.blockID, new ReplicatorItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MineTrekBlocks.replicator), new ReplicatorItemRenderer());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBolt.class, new PhaserBoltRenderer());
 	}

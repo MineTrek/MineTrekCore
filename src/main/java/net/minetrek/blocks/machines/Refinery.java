@@ -10,13 +10,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Refinery extends Block {
 
-	public Refinery(int par1) {
-		super(par1, Material.iron);
-		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("refinery");
-		setTextureName("minetrek:refinery");
-		LanguageRegistry.addName(this, "Refinery");
-		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
+	public Refinery() {
+		super(Material.iron);
+		setStepSound(Block.soundTypeMetal);
+		setBlockName("refinery");
+		setBlockTextureName("minetrek:refinery");
 	}
 
 	@Override

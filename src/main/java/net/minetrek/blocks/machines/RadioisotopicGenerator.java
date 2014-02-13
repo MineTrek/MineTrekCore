@@ -12,18 +12,17 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
-import cpw.mods.fml.common.network.FMLNetworkHandler;
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class RadioisotopicGenerator extends BlockContainer {
 
-	public RadioisotopicGenerator(int par1) {
-		super(par1, Material.iron);
-		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("radioisotropticGenerator");
-		LanguageRegistry.addName(this, "Radioisotropic Generator");
-		setTextureName("minetrek:radioisotropticGeneratorOff");
+	public RadioisotopicGenerator() {
+		super(Material.iron);
+		setStepSound(Block.soundTypeMetal);
+		setBlockName("radioisotropticGenerator");
+		setBlockTextureName("minetrek:radioisotropticGeneratorOff");
 
 		setBlockBounds(0F, 0F, 0F, 1.0F, 2.0F, 1.0F);
 
@@ -52,7 +51,7 @@ public class RadioisotopicGenerator extends BlockContainer {
 			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.RADIOISOTOPIC_GENERATOR_GUI, world, x, y, z);
 		}
 
-		RadioisotopicGeneratorTileEntity te = ((RadioisotopicGeneratorTileEntity) world.getBlockTileEntity(x, y, z));
+		RadioisotopicGeneratorTileEntity te = ((RadioisotopicGeneratorTileEntity) world.getTileEntity(x, y, z));
 
 		te.setStatus(!te.isOn());
 
@@ -61,7 +60,7 @@ public class RadioisotopicGenerator extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new RadioisotopicGeneratorTileEntity();
 	}
 }

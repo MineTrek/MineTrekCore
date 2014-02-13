@@ -7,11 +7,10 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import universalelectricity.api.CompatibilityModule;
 import universalelectricity.api.energy.EnergyStorageHandler;
 import universalelectricity.api.energy.IEnergyContainer;
@@ -46,7 +45,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData packet) {
+	public void onDataPacket(NetworkManager net, Packet132TileEntityData packet) {
 		readFromNBT(packet.data);
 	}
 
@@ -90,18 +89,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 		if (itemstack != null && itemstack.stackSize > getInventoryStackLimit()) {
 			itemstack.stackSize = getInventoryStackLimit();
 		}
-		onInventoryChanged();
 
-	}
-
-	@Override
-	public String getInvName() {
-		return "Laser Electron Manipulator";
-	}
-
-	@Override
-	public boolean isInvNameLocalized() {
-		return true;
 	}
 
 	@Override
@@ -112,16 +100,6 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		return player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64;
-	}
-
-	@Override
-	public void openChest() {
-
-	}
-
-	@Override
-	public void closeChest() {
-
 	}
 
 	@Override
@@ -233,6 +211,28 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
 		return true;
+	}
+
+	@Override
+	public void closeInventory() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getInventoryName() {
+		return "Laser Electron Manipulator";
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
+
+	@Override
+	public void openInventory() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

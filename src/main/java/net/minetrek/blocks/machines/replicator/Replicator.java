@@ -12,18 +12,16 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
-import cpw.mods.fml.common.network.FMLNetworkHandler;
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Replicator extends BlockContainer {
 
-	public Replicator(int par1) {
-		super(par1, Material.iron);
-		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("replicator");
-		LanguageRegistry.addName(this, "Replicator");
-		setTextureName("minetrek:replicator");
+	public Replicator() {
+		super(Material.iron);
+		setStepSound(Block.soundTypeMetal);
+		setBlockName("replicator");
+		setBlockTextureName("minetrek:replicator");
 
 		setBlockBounds(0F, 0F, 0F, 1.0F, 2.0F, 1.0F);
 
@@ -57,7 +55,7 @@ public class Replicator extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new ReplicatorTileEntity();
 	}
 

@@ -44,7 +44,7 @@ public class EntityPhaserBolt extends EntityThrowable {
 		if (mop.entityHit != null)
 			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10);
 		else {
-			float hd = Block.blocksList[worldObj.getBlockId(mop.blockX, mop.blockY, mop.blockZ)].getBlockHardness(worldObj, mop.blockX,
+			float hd = Blocks.blocksList[worldObj.getBlockId(mop.blockX, mop.blockY, mop.blockZ)].getBlockHardness(worldObj, mop.blockX,
 					mop.blockY, mop.blockZ);
 			if (hd < 4.0F && hd > -1)
 				worldObj.destroyBlock(mop.blockX, mop.blockY, mop.blockZ, true);

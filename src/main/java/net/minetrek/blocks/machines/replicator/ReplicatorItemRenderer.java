@@ -1,6 +1,6 @@
 package net.minetrek.blocks.machines.replicator;
 
-import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
@@ -18,7 +18,7 @@ public class ReplicatorItemRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-		TileEntityRenderer.instance.renderTileEntityAt(new ReplicatorTileEntity(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRendererDispatcher.instance.renderTileEntityAt(new ReplicatorTileEntity(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
 
 }

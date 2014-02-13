@@ -12,9 +12,8 @@ public class TransparentAlmuninum extends Block {
 
 		setHardness(20.0F); // 33% harder than diamond
 		setStepSound(Block.soundTypeMetal);
-		setUnlocalizedName("transparentAluminum");
+		setBlockName("transparentAluminum");
 		setBlockTextureName("minetrek:transparentAluminumBlock");
-		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 3);
 		this.setResistance(500.0F);
 	}
 

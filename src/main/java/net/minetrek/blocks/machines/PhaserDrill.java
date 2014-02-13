@@ -21,13 +21,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class PhaserDrill extends BlockContainer {
 
-	public PhaserDrill(int par1) {
-		super(par1, Material.iron);
-		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("phaserDrill");
-		LanguageRegistry.addName(this, "Phaser Drill");
-		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
-		setTextureName("minetrek:phaserDrill");
+	public PhaserDrill() {
+		super(Material.iron);
+		setStepSound(Block.soundTypeMetal);
+		setBlockName("phaserDrill");
+		setBlockTextureName("minetrek:phaserDrill");
 
 		this.setBlockBounds(0F, 0F, 0F, 1.0F, 2.0F, 1.0F);
 
@@ -55,11 +53,6 @@ public class PhaserDrill extends BlockContainer {
 		w.setBlockMetadataWithNotify(x, y, z, dir, 0);
 	}
 
-	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new PhaserDrillTileEntity();
-	}
-
 	@SideOnly(Side.CLIENT)
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
@@ -75,6 +68,11 @@ public class PhaserDrill extends BlockContainer {
 		e.setThrowableHeading(fromX - x, fromY - y, fromZ - z, 5.0F, 0.0F);
 		world.playSound(fromX, fromY, fromZ, "minetrek:phaser", 0.5F, 0.4F / (new Random().nextFloat() * 0.4F + 0.8F), true);
 		world.spawnEntityInWorld(e);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new PhaserDrillTileEntity();
 	}
 
 }

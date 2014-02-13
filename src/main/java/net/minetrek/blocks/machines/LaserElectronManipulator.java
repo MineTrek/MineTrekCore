@@ -13,19 +13,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
-import cpw.mods.fml.common.network.FMLNetworkHandler;
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class LaserElectronManipulator extends BlockContainer {
 
-	public LaserElectronManipulator(int par1) {
-		super(par1, Material.iron);
-		setStepSound(Block.soundMetalFootstep);
-		setUnlocalizedName("laserElectronManipulator");
-		LanguageRegistry.addName(this, "Laser Electron Manipulator");
-		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
-		setTextureName("minetrek:laserElectronManipulator");
+	public LaserElectronManipulator() {
+		super(Material.iron);
+		setStepSound(Block.soundTypeMetal);
+		setBlockName("laserElectronManipulator");
+		setBlockTextureName("minetrek:laserElectronManipulator");
 
 		GameRegistry.registerTileEntity(LaserElectronManipulatorTileEntity.class, "laserElectronManipulatorTileEntity");
 	}
@@ -52,11 +50,6 @@ public class LaserElectronManipulator extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new LaserElectronManipulatorTileEntity();
-	}
-
-	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.LASER_ELECTRON_MANIPULATOR_GUI, world, x, y, z);
@@ -64,5 +57,10 @@ public class LaserElectronManipulator extends BlockContainer {
 
 		return true;
 
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new LaserElectronManipulatorTileEntity();
 	}
 }

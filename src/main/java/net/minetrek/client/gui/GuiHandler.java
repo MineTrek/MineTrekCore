@@ -17,12 +17,12 @@ public class GuiHandler implements IGuiHandler {
 	public static final int REPLICATOR_GUI = 2;
 
 	public GuiHandler() {
-		NetworkRegistry.instance().registerGuiHandler(MineTrek.instance, this);
+		NetworkRegistry.INSTANCE.registerGuiHandler(MineTrek.instance, this);
 	}
 
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity entity = world.getBlockTileEntity(x, y, z);
+		TileEntity entity = world.getTileEntity(x, y, z);
 		switch (id) {
 		case LASER_ELECTRON_MANIPULATOR_GUI:
 			if (entity != null && entity instanceof LaserElectronManipulatorTileEntity)
@@ -35,7 +35,7 @@ public class GuiHandler implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity entity = world.getBlockTileEntity(x, y, z);
+		TileEntity entity = world.getTileEntity(x, y, z);
 		switch (id) {
 		case LASER_ELECTRON_MANIPULATOR_GUI:
 			if (entity != null && entity instanceof LaserElectronManipulatorTileEntity)
