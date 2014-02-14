@@ -2,21 +2,21 @@ package net.minetrek.items;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class SmallAntimatterStorage extends Item {
 
-	private Icon empty;
-	private Icon full;
+	private IIcon empty;
+	private IIcon full;
 
-	public SmallAntimatterStorage(int par1) {
-		super(par1);
+	public SmallAntimatterStorage() {
+		super();
 		setMaxStackSize(64);
 		setUnlocalizedName("smallAntimatterStorage");
 		setHasSubtypes(true);
@@ -24,18 +24,18 @@ public class SmallAntimatterStorage extends Item {
 	}
 
 	@Override
-	public Icon getIconFromDamage(int dam) {
+	public IIcon getIconFromDamage(int dam) {
 		return dam == 1 ? full : empty;
 	}
 
 	@Override
-	public void registerIcons(IconRegister ir) {
+	public void registerIcons(IIconRegister ir) {
 		empty = ir.registerIcon("minetrek:smallAntimatterStorage_empty");
 		full = ir.registerIcon("minetrek:smallAntimatterStorage_full");
 	}
 
 	@Override
-	public String getItemDisplayName(ItemStack is) {
+	public String getItemStackDisplayName(ItemStack is) {
 		switch (is.getItemDamage()) {
 		case 1:
 			return "Full Small Antimatter Storage";
@@ -46,7 +46,7 @@ public class SmallAntimatterStorage extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
+	public void getSubItems(Item item, CreativeTabs tabs, List list) {
 		for (int i = 0; i < 2; ++i) {
 			list.add(new ItemStack(this, 1, i));
 		}

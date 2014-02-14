@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class TinOre extends Ore {
 
-	public TinOre(int par1) {
-		super(par1, "Tin", 1);
+	public TinOre() {
+		super("tin", 1);
 
 		setHardness(1.0F);
 	}

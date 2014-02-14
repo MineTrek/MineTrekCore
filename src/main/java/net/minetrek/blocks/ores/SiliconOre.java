@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class SiliconOre extends Ore {
 
-	public SiliconOre(int par1) {
-		super(par1, "Silicon", 2);
+	public SiliconOre() {
+		super("silicon", 2);
 
 		setHardness(1.0F);
 	}

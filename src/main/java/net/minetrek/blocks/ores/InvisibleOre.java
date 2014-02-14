@@ -4,10 +4,10 @@ import net.minecraft.world.IBlockAccess;
 
 public class InvisibleOre extends Ore {
 
-	public InvisibleOre(int id) {
-		super(id, "Invisible", 3);
+	public InvisibleOre() {
+		super("invisible", 3);
 		setHardness(5.0F);
-		setTextureName("minetrek:ore");
+		setBlockTextureName("minetrek:ore");
 
 	}
 

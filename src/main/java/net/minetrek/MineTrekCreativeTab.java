@@ -2,9 +2,9 @@ package net.minetrek;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minetrek.blocks.ores.MineTrekOres;
 import net.minetrek.items.MineTrekItems;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MineTrekCreativeTab extends CreativeTabs {
 
@@ -17,11 +17,7 @@ public class MineTrekCreativeTab extends CreativeTabs {
 	}
 
 	@Override
-	public ItemStack getIconItemStack() {
-		return new ItemStack(MineTrekOres.dilithium_ore);
-	}
-
-	@Override
+	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() {
 		return MineTrekItems.phaser;
 	}

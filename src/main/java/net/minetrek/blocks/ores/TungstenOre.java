@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class TungstenOre extends Ore {
 
-	public TungstenOre(int par1) {
-		super(par1, "Tungsten", 2);
+	public TungstenOre() {
+		super("tungsten", 2);
 
 		setHardness(3.0F);
 	}

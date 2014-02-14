@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class CopperOre extends Ore {
 
-	public CopperOre(int par1) {
-		super(par1, "Copper", 2);
+	public CopperOre() {
+		super("copper", 2);
 
 		setHardness(3.0F);
 	}

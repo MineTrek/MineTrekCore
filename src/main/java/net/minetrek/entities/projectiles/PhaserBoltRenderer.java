@@ -56,12 +56,8 @@ public class PhaserBoltRenderer extends Render {
 
 		double len = 180D;
 
-		System.out.println(entity + " " + entity.throwe);
-
 		if (entity.throwe != null)
 			len = entity.throwe.getDistanceToEntity(entity) * 17.5;
-
-		System.out.println(len);
 
 		for (int i = 0; i < 4; ++i) {
 			GL11.glRotatef(90.0F, 1.0F, 0.0F, 0.0F);

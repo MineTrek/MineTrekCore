@@ -49,3 +49,5 @@ item.rubble.name=Rubble
 item.smallAntimatterStorage.name=Small Antimatter Storage
 
 item.phaser.name=Phaser
+
+itemGroup.MineTrek=MineTrek

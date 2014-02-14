@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class DuraniumOre extends Ore {
 
-	public DuraniumOre(int par1) {
-		super(par1, "Duranium", 2);
+	public DuraniumOre() {
+		super("duranium", 2);
 
 		setHardness(3.0F);
 	}

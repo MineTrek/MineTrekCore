@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class PlutoniumOre extends Ore {
 
-	public PlutoniumOre(int par1) {
-		super(par1, "Plutonium", 3);
+	public PlutoniumOre() {
+		super("plutonium", 3);
 
 		setHardness(5.0F);
 

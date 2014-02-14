@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class BauxiteOre extends Ore {
 
-	public BauxiteOre(int par1) {
-		super(par1, "Bauxite", 1);
+	public BauxiteOre() {
+		super("bauxite", 1);
 
 		setHardness(1.0F);
 	}

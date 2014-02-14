@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class TitaniumOre extends Ore {
 
-	public TitaniumOre(int par1) {
-		super(par1, "Titanium", 2);
+	public TitaniumOre() {
+		super("titanium", 2);
 
 		setHardness(3.0F);
 	}

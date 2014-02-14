@@ -12,8 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class Phaser extends Item {
 
-	public Phaser(int par1) {
-		super(par1);
+	public Phaser() {
 		setMaxStackSize(1);
 		setUnlocalizedName("phaser");
 		setTextureName("minetrek:phaserDefault");

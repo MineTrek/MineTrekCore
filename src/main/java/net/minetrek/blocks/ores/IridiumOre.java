@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class IridiumOre extends Ore {
 
-	public IridiumOre(int par1) {
-		super(par1, "Iridium", 2);
+	public IridiumOre() {
+		super("iridium", 2);
 
 		setHardness(1.0F);
 	}

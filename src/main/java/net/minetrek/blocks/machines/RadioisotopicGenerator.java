@@ -14,19 +14,18 @@ import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class RadioisotopicGenerator extends BlockContainer {
 
 	public RadioisotopicGenerator() {
 		super(Material.iron);
 		setStepSound(Block.soundTypeMetal);
-		setBlockName("radioisotropticGenerator");
-		setBlockTextureName("minetrek:radioisotropticGeneratorOff");
+		setBlockName("radioisotopicGenerator");
+		setBlockTextureName("minetrek:radioisotopicGeneratorOff");
 
 		setBlockBounds(0F, 0F, 0F, 1.0F, 2.0F, 1.0F);
 
-		GameRegistry.registerTileEntity(RadioisotopicGeneratorTileEntity.class, "radioisotropticGeneratorTileEntity");
+		GameRegistry.registerTileEntity(RadioisotopicGeneratorTileEntity.class, "radioisotopticGeneratorTileEntity");
 	}
 
 	@Override

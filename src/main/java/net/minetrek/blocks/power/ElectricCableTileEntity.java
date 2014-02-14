@@ -3,19 +3,21 @@ package net.minetrek.blocks.power;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import universalelectricity.api.CompatibilityModule;
 import universalelectricity.api.energy.IEnergyInterface;
 import universalelectricity.api.vector.Vector3;
 
-public class ElectricCableTileEntity extends TileEntity implements IEnergyInterface {
+public class ElectricCableTileEntity extends TileEntity implements
+		IEnergyInterface {
 
 	private final boolean[] attachedSides;
 	public final ArrayList<boolean[]> sideDirections;
@@ -66,12 +68,13 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbtTag = new NBTTagCompound();
 		this.writeToNBT(nbtTag);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 1, nbtTag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord,
+				this.zCoord, 1, nbtTag);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData packet) {
-		readFromNBT(packet.data);
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+		readFromNBT(packet.func_148857_g());
 		for (boolean[] tmp : sideDirections)
 			System.out.println(Arrays.toString(tmp));
 	}
@@ -104,10 +107,10 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 			sideDirections.add(tmp);
 		}
 
-		NBTTagList list = compound.getTagList("AttachedSides");
+		NBTTagList list = compound.getTagList("AttachedSides", 0);
 		for (int i = 0; i < list.tagCount(); i++) {
 
-			NBTTagCompound item = (NBTTagCompound) list.tagAt(i);
+			NBTTagCompound item = (NBTTagCompound) list.getCompoundTagAt(i);
 
 			setAttachedSide(item.getByte("Side"), true);
 			boolean[] dirs = new boolean[4];
@@ -163,10 +166,12 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 	}
 
 	private boolean testConnect(ForgeDirection direction) {
-		TileEntity tileEntity = new Vector3(this).translate(direction).getTileEntity(this.worldObj);
+		TileEntity tileEntity = new Vector3(this).translate(direction)
+				.getTileEntity(this.worldObj);
 
 		if (tileEntity != null) {
-			return CompatibilityModule.canConnect(tileEntity, direction.getOpposite());
+			return CompatibilityModule.canConnect(tileEntity,
+					direction.getOpposite());
 		}
 
 		return false;

@@ -1,13 +1,11 @@
 package net.minetrek.blocks.ores;
 
-
 public class UraniumOre extends Ore {
 
-	public UraniumOre(int par1) {
-		super(par1, "Uranium", 3);
-		
+	public UraniumOre() {
+		super("uranium", 3);
+
 		setHardness(4.0F);
-		setLightValue(0.2f);
 	}
 
 	@Override

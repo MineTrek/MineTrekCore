@@ -1,0 +1,14 @@
+{
+  "phaser": {
+    "category": "master",
+    "sounds": [
+      "phaser1"
+    ]
+  },
+  "disruptor": {
+    "category": "master",
+    "sounds": [
+      "disruptor1"
+    ]
+  }
+}

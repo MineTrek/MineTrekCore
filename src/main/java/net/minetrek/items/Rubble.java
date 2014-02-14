@@ -4,8 +4,8 @@ import net.minecraft.item.Item;
 
 public class Rubble extends Item {
 
-	public Rubble(int par1) {
-		super(par1);
+	public Rubble() {
+		super();
 		this.setUnlocalizedName("rubble");
 		this.setTextureName("minetrek:rubble");
 	}

@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class NitriumOre extends Ore {
 
-	public NitriumOre(int par1) {
-		super(par1, "Nitrium", 2);
+	public NitriumOre() {
+		super("nitrium", 2);
 
 		setHardness(1.0F);
 	}

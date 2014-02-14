@@ -16,32 +16,28 @@ import net.minecraftforge.common.MinecraftForge;
  */
 public abstract class Ore extends Block {
 
+	public String name;
+
 	/**
 	 * Creates an Ore with several standard settings, such as Material(rock), StepSound(stone),
-	 * unlocalizedName, textureName, and HarvestLevel(pickaxe). It also adds a
-	 * Human readable name to the language registry.
+	 * unlocalizedName, textureName, and HarvestLevel(pickaxe).
 	 * 
 	 * All these settings can be overridden in the extending class.
 	 * 
 	 * @param id
 	 *            ID to give the block
 	 * @param name
-	 *            Name of the ore (should have capitals and be in Human readable
-	 *            format with no spaces [aka "Strontium", not "strontium"])
+	 *            Name of the ore without the word Ore or an initial capital ["dilithium"]
 	 * @param harvestLevel
 	 *            HarvestLevel for the block, 0 - 3 for wood - diamond pickaxes
 	 */
-	public Ore(int id, String name, int harvestLevel) {
-		super(id, Material.rock);
+	public Ore(String name, int harvestLevel) {
+		super(Material.rock);
 
-		String shortname = name.replaceFirst(name.substring(0, 1), name
-				.substring(0, 1).toLowerCase());
-
-		setStepSound(Block.soundStoneFootstep);
-		setUnlocalizedName(shortname + "Ore");
-		setTextureName("minetrek:ore" + name);
-		LanguageRegistry.addName(this, name + " Ore");
-		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", harvestLevel);
+		setStepSound(Block.soundTypeStone);
+		setBlockName(this.name = (name + "Ore"));
+		setBlockTextureName("minetrek:ore" + name);
+		setHarvestLevel("pickaxe", harvestLevel);
 	}
 
 	/**
@@ -70,7 +66,7 @@ public abstract class Ore extends Block {
 	/**
 	 * How many blocks per vein there should be(about)
 	 * @param dimension The dimension of the world its in.
-	 * @return How many blocks on aveage to generate
+	 * @return How many blocks on average to generate
 	 */
 	public abstract int blocksPerVein(int dimension);
 

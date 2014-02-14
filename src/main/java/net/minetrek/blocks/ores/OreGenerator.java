@@ -42,7 +42,7 @@ public class OreGenerator implements IWorldGenerator {
 				int firstBlockYCoord = random.nextInt(o.getMaxGenHeight(0));
 				int firstBlockZCoord = j + random.nextInt(16);
 				
-				(new WorldGenMinable(o.blockID, o.blocksPerVein(0))).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+				(new WorldGenMinable(o, o.blocksPerVein(0))).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
 				
 			}
 	}

@@ -1,19 +1,17 @@
 package net.minetrek.blocks.ores;
 
-import java.util.ArrayList;
+import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.item.Item;
 import net.minetrek.items.MineTrekItems;
 
 public class DilithiumOre extends Ore {
 
-	public DilithiumOre(int par1) {
-		super(par1, "Dilithium", 3);
+	public DilithiumOre() {
+		super("dilithium", 3);
 
 		setHardness(5.0F);
-		setLightValue(.4F);
+		setLightLevel(.4F);
 	}
 
 	@Override
@@ -30,12 +28,15 @@ public class DilithiumOre extends Ore {
 	public int blocksPerVein(int dimension) {
 		return 2;
 	}
-	
+
 	@Override
-	public ArrayList<ItemStack> getBlockDropped(World w, int x, int y, int z, int meta, int fortune){
-		ArrayList<ItemStack> stcks = new ArrayList<ItemStack>();
-		stcks.add(new ItemStack(MineTrekItems.dilithium_crystal, 1 + fortune));
-		return stcks;
+	public Item getItemDropped(int meta, Random rand, int idk) {
+		return MineTrekItems.dilithium_crystal;
+	}
+
+	@Override
+	public int quantityDropped(int meta, int fortune, Random rand) {
+		return 1 + fortune;
 	}
 
 }

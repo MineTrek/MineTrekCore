@@ -2,8 +2,8 @@ package net.minetrek.blocks.ores;
 
 public class ChromiteOre extends Ore {
 
-	public ChromiteOre(int par1) {
-		super(par1, "Chromite", 2);
+	public ChromiteOre() {
+		super("chromite", 2);
 		setHardness(3.0F);
 	}
 

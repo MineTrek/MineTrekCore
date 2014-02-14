@@ -16,7 +16,6 @@ public class EntityPhaserBolt extends EntityThrowable {
 		super(world);
 
 		init();
-		System.out.println("Called1");
 
 	}
 
@@ -24,12 +23,10 @@ public class EntityPhaserBolt extends EntityThrowable {
 		super(par1World, entity);
 		throwe = entity;
 		init();
-		System.out.println("Called2");
 	}
 
 	public EntityPhaserBolt(World par1World, double par2, double par4, double par6) {
 		super(par1World, par2, par4, par6);
-		System.out.println("Called3");
 		init();
 	}
 
@@ -44,10 +41,12 @@ public class EntityPhaserBolt extends EntityThrowable {
 		if (mop.entityHit != null)
 			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10);
 		else {
-			float hd = Blocks.blocksList[worldObj.getBlockId(mop.blockX, mop.blockY, mop.blockZ)].getBlockHardness(worldObj, mop.blockX,
-					mop.blockY, mop.blockZ);
+			Block b = worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
+			float hd = b.getBlockHardness(worldObj, mop.blockX, mop.blockY, mop.blockZ);
 			if (hd < 4.0F && hd > -1)
-				worldObj.destroyBlock(mop.blockX, mop.blockY, mop.blockZ, true);
+				worldObj.func_147480_a(mop.blockX, mop.blockY, mop.blockZ, true);
+			// b.breakBlock(worldObj, mop.blockX, mop.blockY, mop.blockZ, b,
+			// worldObj.getBlockMetadata(mop.blockX, mop.blockY, mop.blockZ));
 		}
 		this.setDead();
 	}
@@ -68,7 +67,6 @@ public class EntityPhaserBolt extends EntityThrowable {
 	@Override
 	public void setLocationAndAngles(double d1, double d2, double d3, float f1, float f2) {
 		super.setPositionAndRotation(d1, d2, d3, f1, f2);
-		System.out.println("Called");
 		float closest = 5.0F;
 		Entity thisOne = null;
 		for (int i = 0; i < worldObj.loadedEntityList.size(); i++) {
