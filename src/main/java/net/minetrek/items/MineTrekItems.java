@@ -14,7 +14,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class MineTrekItems {
 
-	public static Item dilithium_ingot;
 	public static Item bronze_ingot;
 	public static Item brass_ingot;
 	public static Item chromium_ingot;
@@ -41,7 +40,6 @@ public class MineTrekItems {
 
 		// Ingots
 		aluminum_ingot = registerIngot("aluminumIngot");
-		dilithium_ingot = registerIngot("dilithiumIngot");
 		bronze_ingot = registerIngot("bronzeIngot");
 		brass_ingot = registerIngot("brassIngot");
 		chromium_ingot = registerIngot("chromiumIngot");
