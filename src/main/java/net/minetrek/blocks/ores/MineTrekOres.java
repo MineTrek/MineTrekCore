@@ -1,4 +1,4 @@
-package MineTrekCore.net.minetrek.blocks.ores;
+package net.minetrek.blocks.ores;
 
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.common.registry.GameRegistry;

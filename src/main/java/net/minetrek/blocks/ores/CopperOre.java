@@ -1,4 +1,4 @@
-package MineTrekCore.net.minetrek.blocks.ores;
+package net.minetrek.blocks.ores;
 
 public class CopperOre extends Ore {
 

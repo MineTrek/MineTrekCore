@@ -1,11 +1,11 @@
-package MineTrekCore.net.minetrek.blocks;
+package net.minetrek.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class TransparentAlmuninum extends Block {
+public class TransparentAluminum extends Block {
 
-	public TransparentAlmuninum() {
+	public TransparentAluminum() {
 		super(Material.glass);
 
 		setHardness(20.0F); // 33% harder than diamond

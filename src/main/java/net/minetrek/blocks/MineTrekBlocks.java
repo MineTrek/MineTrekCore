@@ -2,7 +2,6 @@ package net.minetrek.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.PhaserDrill;
@@ -54,12 +53,10 @@ public class MineTrekBlocks {
 		refinery = new Refinery().setCreativeTab(ct);
 		GameRegistry.registerBlock(refinery, "refinery");
 
-		laser_electron_manipulator = new LaserElectronManipulator()
-				.setCreativeTab(ct);
+		laser_electron_manipulator = new LaserElectronManipulator().setCreativeTab(ct);
 		GameRegistry.registerBlock(laser_electron_manipulator, "laserElectronManipulator");
 
-		radioisotopic_generator = new RadioisotopicGenerator()
-				.setCreativeTab(ct);
+		radioisotopic_generator = new RadioisotopicGenerator().setCreativeTab(ct);
 		GameRegistry.registerBlock(radioisotopic_generator, "radioisotopicGenerator");
 
 		phaser_drill = new PhaserDrill().setCreativeTab(ct);
@@ -69,7 +66,7 @@ public class MineTrekBlocks {
 		GameRegistry.registerBlock(replicator, "replicator");
 
 		// Others
-		transparent_aluminum = new TransparentAlmuninum().setCreativeTab(ct);
+		transparent_aluminum = new TransparentAluminum().setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparentAluminum");
 
 		electric_cable = new ElectricCable().setCreativeTab(ct);

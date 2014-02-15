@@ -36,8 +36,7 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 
 		if (world != null && world.blockExists(i, j, k)) {
 			Tessellator tessellator = Tessellator.instance;
-			// This will make your block brightness dependent from surroundings
-			// lighting.
+
 			float f = block.getLightValue(world, i, j, k);
 			int l = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
 			int l1 = l % 65536;
@@ -56,6 +55,7 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 
 		} else {
 			GL11.glPushMatrix();
+			GL11.glTranslatef(0.5F, -0.5F, 0.5F);
 
 			this.bindTexture(new ResourceLocation("minetrek", "textures/blocks/electricCable.png"));
 			model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);

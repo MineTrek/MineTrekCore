@@ -84,7 +84,6 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 			if (compound.hasKey(fd.name()))
 				addAttachedSide(fd);
 		}
-		System.out.println(attachedSides);
 
 	}
 
@@ -101,6 +100,7 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 			attachedSides.add(ForgeDirection.UP);
 		if (testConnect(ForgeDirection.DOWN))
 			attachedSides.add(ForgeDirection.DOWN);
+		System.out.println(attachedSides);
 
 		w.markBlockForUpdate(x, y, z);
 
