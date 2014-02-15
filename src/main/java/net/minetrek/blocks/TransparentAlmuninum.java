@@ -2,8 +2,6 @@ package net.minetrek.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class TransparentAlmuninum extends Block {
 
@@ -13,7 +11,7 @@ public class TransparentAlmuninum extends Block {
 		setHardness(20.0F); // 33% harder than diamond
 		setStepSound(Block.soundTypeMetal);
 		setBlockName("transparentAluminum");
-		setBlockTextureName("minetrek:transparentAluminumBlock");
+		setBlockTextureName("minetrek:transparentAluminum");
 		this.setResistance(500.0F);
 	}
 
