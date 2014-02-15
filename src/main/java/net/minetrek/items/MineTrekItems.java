@@ -35,6 +35,7 @@ public class MineTrekItems {
 	public static Item dilithium_crystal;
 	public static Item phaser;
 	public static Item smallAntimatterStorage;
+	public static Item latinum;
 
 	public static void initialize(CreativeTabs tab) {
 
@@ -72,6 +73,9 @@ public class MineTrekItems {
 
 		smallAntimatterStorage = new SmallAntimatterStorage().setCreativeTab(tab);
 		GameRegistry.registerItem(smallAntimatterStorage, "smallAntimatterStorage");
+
+		latinum = new Latinum().setCreativeTab(tab);
+		GameRegistry.registerItem(latinum, "latinum");
 
 	}
 

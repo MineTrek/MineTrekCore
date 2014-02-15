@@ -28,6 +28,7 @@ public class MineTrekBlocks {
 	public static Block electric_cable;
 	public static Block radioisotopic_generator;
 	public static Block replicator;
+	private static Block dabo_wheel;
 
 	/**
 	 * Initializes non-ore blocks
@@ -71,6 +72,9 @@ public class MineTrekBlocks {
 
 		electric_cable = new ElectricCable().setCreativeTab(ct);
 		GameRegistry.registerBlock(electric_cable, "electricCable");
+
+		dabo_wheel = new DaboWheel().setCreativeTab(ct);
+		GameRegistry.registerBlock(dabo_wheel, "daboWheel");
 	}
 
 }
