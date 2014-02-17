@@ -22,20 +22,22 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 	private final ItemStack[] inventory;
 	public EnergyStorageHandler energy;
-	private final ArrayList<ForgeDirection> outputDirections;
+	private final static int COOK_TIME = 300;
+	private int time_remaining;
+	private boolean isCooking;
 
 	private static final ArrayList<ItemStack> recipeIngredients = new ArrayList<ItemStack>(), recipeProducts = new ArrayList<ItemStack>();
+	private static final long ENERGY_PER_TICK = 10;
 
 	public LaserElectronManipulatorTileEntity() {
 		super();
 
 		inventory = new ItemStack[2];
 		energy = new EnergyStorageHandler(1000);
+		energy.setEnergy(1000); // Temporary
 
-		outputDirections = new ArrayList<ForgeDirection>();
-		for (ForgeDirection fd : ForgeDirection.values())
-			if (!fd.equals(ForgeDirection.UNKNOWN))
-				outputDirections.add(fd);
+		time_remaining = 0;
+		isCooking = false;
 	}
 
 	@Override
@@ -84,12 +86,12 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	@Override
 	public void setInventorySlotContents(int i, ItemStack itemstack) {
 
-		System.out.println(itemstack);
-
 		inventory[i] = itemstack;
 		if (itemstack != null && itemstack.stackSize > getInventoryStackLimit()) {
 			itemstack.stackSize = getInventoryStackLimit();
 		}
+
+		updateEntity();
 
 	}
 
@@ -174,7 +176,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	protected long produce(long outputEnergy, ForgeDirection arg0) {
 		long usedEnergy = 0;
 
-		for (ForgeDirection direction : outputDirections) {
+		for (ForgeDirection direction : ForgeDirection.VALID_DIRECTIONS) {
 			if (outputEnergy > 0 && !direction.equals(arg0)) {
 				TileEntity tileEntity = new Vector3(this).translate(direction).getTileEntity(this.worldObj);
 
@@ -216,8 +218,6 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 	@Override
 	public void closeInventory() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -232,8 +232,76 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 	@Override
 	public void openInventory() {
-		// TODO Auto-generated method stub
+	}
 
+	@Override
+	public void updateEntity() {
+
+		if (this.worldObj.isRemote)
+			return;
+
+		System.out.println("Updating: " + time_remaining + " " + isCooking + " " + " " + inventory[0] + " " + validIngredient() + " " + recipeIngredients);
+
+		if (time_remaining > 0 && energy.checkExtract(ENERGY_PER_TICK)) {
+			// energy.extractEnergy(ENERGY_PER_TICK, true);
+			time_remaining--;
+		}
+
+		if (isCooking && time_remaining == 0) {
+
+			if (!validIngredient()) {
+				isCooking = false;
+				time_remaining = 0;
+			} else {
+
+				ItemStack tmp = inventory[1];
+
+				ItemStack product = getProduct(inventory[0]);
+
+				if (tmp == null) {
+					isCooking = false;
+					inventory[1] = product.copy();
+				} else if (tmp.getMaxStackSize() >= tmp.stackSize + product.stackSize && tmp.getItem().equals(product.getItem())) {
+					isCooking = false;
+					inventory[1].stackSize += product.stackSize;
+
+				}
+
+				if (!isCooking)
+					if (inventory[0].stackSize <= 1)
+						inventory[0] = null;
+					else
+						inventory[0].stackSize--;
+			}
+
+		}
+
+		if (!isCooking && validIngredient()) {
+
+			time_remaining = COOK_TIME;
+			isCooking = true;
+
+		}
+
+	}
+
+	private boolean validIngredient() {
+		if (inventory[0] != null)
+			for (ItemStack is : recipeIngredients)
+				if (inventory[0].getItem().equals(is.getItem()))
+					return true;
+		return false;
+	}
+
+	private ItemStack getProduct(ItemStack ingredient) {
+		for (int i = 0; i < recipeIngredients.size(); i++)
+			if (recipeIngredients.get(i).getItem().equals(ingredient.getItem()))
+				return recipeProducts.get(i);
+		return null;
+	}
+
+	public int getBurnTimeRemainingScaled(int outOf) {
+		return outOf * time_remaining / COOK_TIME;
 	}
 
 }
