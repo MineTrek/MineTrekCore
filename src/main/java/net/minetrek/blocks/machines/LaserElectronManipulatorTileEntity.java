@@ -125,6 +125,11 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 			}
 		}
 		compound.setTag("LEMItems", list);
+
+		compound.setBoolean("cooking", isCooking);
+		compound.setInteger("remaining", time_remaining);
+
+		energy.writeToNBT(compound);
 	}
 
 	@Override
@@ -141,6 +146,11 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
 			}
 		}
+
+		isCooking = compound.getBoolean("cooking");
+		time_remaining = compound.getInteger("remaining");
+
+		energy.readFromNBT(compound);
 	}
 
 	@Override
@@ -240,7 +250,11 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 		if (this.worldObj.isRemote)
 			return;
 
-		System.out.println("Updating: " + time_remaining + " " + isCooking + " " + " " + inventory[0] + " " + validIngredient() + " " + recipeIngredients);
+		if (!validIngredient()) {
+			isCooking = false;
+			time_remaining = 0;
+			return;
+		}
 
 		if (time_remaining > 0 && energy.checkExtract(ENERGY_PER_TICK)) {
 			// energy.extractEnergy(ENERGY_PER_TICK, true);
@@ -249,10 +263,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 		if (isCooking && time_remaining == 0) {
 
-			if (!validIngredient()) {
-				isCooking = false;
-				time_remaining = 0;
-			} else {
+			{
 
 				ItemStack tmp = inventory[1];
 
@@ -283,6 +294,8 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 		}
 
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+
 	}
 
 	private boolean validIngredient() {
@@ -301,7 +314,11 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	}
 
 	public int getBurnTimeRemainingScaled(int outOf) {
-		return outOf * time_remaining / COOK_TIME;
+		return outOf - outOf * time_remaining / COOK_TIME;
+	}
+
+	public boolean isCooking() {
+		return isCooking;
 	}
 
 }
