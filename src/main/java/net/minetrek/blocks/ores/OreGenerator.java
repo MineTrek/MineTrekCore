@@ -36,7 +36,7 @@ public class OreGenerator implements IWorldGenerator {
 
 	private void generateSurface(World world, Random random, int i, int j) {
 		for (Ore o : ores)
-			for (int k = 0; k < 10; k++) {
+			for (int k = 0; k < o.getNumberPerChunk(0); k++) {
 				int firstBlockXCoord = i + random.nextInt(16);
 				int firstBlockYCoord = random.nextInt(o.getMaxGenHeight(0));
 				int firstBlockZCoord = j + random.nextInt(16);
