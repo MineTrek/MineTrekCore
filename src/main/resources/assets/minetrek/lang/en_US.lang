@@ -44,6 +44,22 @@ item.tritaniumIngot.name=Tritanium Ingot
 item.tungstenIngot.name=Tungsten Ingot
 item.uraniumIngot.name=Uranium Ingot
 
+item.aluminumDust.name=Aluminum Dust
+item.brassDust.name=Brass Dust
+item.bronzeDust.name=Bronze Dust
+item.chromiumDust.name=Chromium Dust
+item.copperDust.name=Copper Dust
+item.duraniumDust.name=Duranium Dust
+item.invisibleDust.name=Invisible Dust
+item.iridiumDust.name=Iridium Dust
+item.platinumDust.name=Platinum Dust
+item.siliconDust.name=Silicon Dust
+item.steelDust.name=Steel Dust
+item.tinDust.name=Tin Dust
+item.titaniumDust.name=Titanium Dust
+item.tritaniumDust.name=Tritanium Dust
+item.tungstenDust.name=Tungsten Dust
+
 item.dilithiumCrystal.name=Dilithium Crystal
 item.rubble.name=Rubble
 item.smallAntimatterStorage.name=Small Antimatter Storage

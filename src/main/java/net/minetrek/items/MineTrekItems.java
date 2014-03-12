@@ -36,6 +36,19 @@ public class MineTrekItems {
 	public static Item phaser;
 	public static Item smallAntimatterStorage;
 	public static Item latinum;
+	private static Item aluminum_dust;
+	private static Item bronze_dust;
+	private static Item brass_dust;
+	private static Item chromium_dust;
+	private static Item copper_dust;
+	private static Item duranium_dust;
+	private static Item invisible_dust;
+	private static Item iridium_dust;
+	private static Item platinum_dust;
+	private static Item tin_dust;
+	private static Item titanium_dust;
+	private static Item tritanium_dust;
+	private static Item tungsten_dust;
 
 	public static void initialize(CreativeTabs tab) {
 
@@ -59,6 +72,19 @@ public class MineTrekItems {
 		uranium_ingot = registerIngot("uraniumIngot");
 
 		// Dust
+		aluminum_dust = registerDust("aluminumDust");
+		bronze_dust = registerDust("bronzeDust");
+		brass_dust = registerDust("brassDust");
+		chromium_dust = registerDust("chromiumDust");
+		copper_dust = registerDust("copperDust");
+		duranium_dust = registerDust("duraniumDust");
+		invisible_dust = registerDust("invisibleDust");
+		iridium_dust = registerDust("iridiumDust");
+		platinum_dust = registerDust("platinumDust");
+		tin_dust = registerDust("tinDust");
+		titanium_dust = registerDust("titaniumDust");
+		tritanium_dust = registerDust("tritaniumDust");
+		tungsten_dust = registerDust("tungstenDust");
 
 		// Tools
 		phaser = new Phaser().setCreativeTab(tab);
@@ -83,6 +109,12 @@ public class MineTrekItems {
 		Item ingot = new Item().setCreativeTab(MineTrek.creativeTab).setUnlocalizedName(name).setTextureName(MineTrek.MODID + ":" + name);
 		GameRegistry.registerItem(ingot, name);
 		return ingot;
+	}
+
+	private static Item registerDust(String name) {
+		Item dust = new Item().setCreativeTab(MineTrek.creativeTab).setUnlocalizedName(name).setTextureName(MineTrek.MODID + ":" + name);
+		GameRegistry.registerItem(dust, name);
+		return dust;
 	}
 
 }
