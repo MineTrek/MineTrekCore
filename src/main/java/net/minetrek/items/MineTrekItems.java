@@ -36,19 +36,19 @@ public class MineTrekItems {
 	public static Item phaser;
 	public static Item smallAntimatterStorage;
 	public static Item latinum;
-	private static Item aluminum_dust;
-	private static Item bronze_dust;
-	private static Item brass_dust;
-	private static Item chromium_dust;
-	private static Item copper_dust;
-	private static Item duranium_dust;
-	private static Item invisible_dust;
-	private static Item iridium_dust;
-	private static Item platinum_dust;
-	private static Item tin_dust;
-	private static Item titanium_dust;
-	private static Item tritanium_dust;
-	private static Item tungsten_dust;
+	public static Item aluminum_dust;
+	public static Item bronze_dust;
+	public static Item brass_dust;
+	public static Item chromium_dust;
+	public static Item copper_dust;
+	public static Item duranium_dust;
+	public static Item invisible_dust;
+	public static Item iridium_dust;
+	public static Item platinum_dust;
+	public static Item tin_dust;
+	public static Item titanium_dust;
+	public static Item tritanium_dust;
+	public static Item tungsten_dust;
 
 	public static void initialize(CreativeTabs tab) {
 

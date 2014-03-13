@@ -6,6 +6,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.PhaserDrill;
 import net.minetrek.blocks.machines.RadioisotopicGenerator;
+import net.minetrek.blocks.machines.RadioisotopicGeneratorHelper;
 import net.minetrek.blocks.machines.Refinery;
 import net.minetrek.blocks.machines.replicator.Replicator;
 import net.minetrek.blocks.power.ElectricCable;
@@ -28,7 +29,8 @@ public class MineTrekBlocks {
 	public static Block electric_cable;
 	public static Block radioisotopic_generator;
 	public static Block replicator;
-	private static Block dabo_wheel;
+	public static Block dabo_wheel;
+	public static Block radioisotopic_generator_helper;
 
 	/**
 	 * Initializes non-ore blocks
@@ -59,6 +61,9 @@ public class MineTrekBlocks {
 
 		radioisotopic_generator = new RadioisotopicGenerator().setCreativeTab(ct);
 		GameRegistry.registerBlock(radioisotopic_generator, "radioisotopicGenerator");
+
+		radioisotopic_generator_helper = new RadioisotopicGeneratorHelper();
+		GameRegistry.registerBlock(radioisotopic_generator_helper, "radioisotopicGeneratorHelper");
 
 		phaser_drill = new PhaserDrill().setCreativeTab(ct);
 		GameRegistry.registerBlock(phaser_drill, "phaserDrill");
