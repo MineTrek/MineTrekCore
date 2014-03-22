@@ -17,11 +17,13 @@ public class RadioisotopicGeneratorTileEntity extends TileEntity {
 	@Override
 	public void writeToNBT(NBTTagCompound par1) {
 		super.writeToNBT(par1);
+		par1.setBoolean("status", status);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound par1) {
 		super.readFromNBT(par1);
+		status = par1.getBoolean("status");
 	}
 
 	@Override

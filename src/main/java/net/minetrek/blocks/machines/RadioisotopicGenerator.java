@@ -42,6 +42,8 @@ public class RadioisotopicGenerator extends BlockContainer {
 
 	@Override
 	public void onBlockPlacedBy(World w, int x, int y, int z, EntityLivingBase player, ItemStack is) {
+		if (w.isRemote)
+			return;
 		w.setBlock(x, y + 1, z, MineTrekBlocks.radioisotopic_generator_helper);
 		int dir = MathHelper.floor_double((player.rotationYaw * 4F) / 360F + 0.5D) & 3;
 		w.setBlockMetadataWithNotify(x, y, z, dir, 0);
@@ -51,11 +53,11 @@ public class RadioisotopicGenerator extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			FMLNetworkHandler.openGui(player, MineTrek.instance, GuiHandler.RADIOISOTOPIC_GENERATOR_GUI, world, x, y, z);
+			RadioisotopicGeneratorTileEntity te = ((RadioisotopicGeneratorTileEntity) world.getTileEntity(x, y, z));
+
+			te.setStatus(!te.isOn());
+			world.markBlockForUpdate(x, y, z);
 		}
-
-		RadioisotopicGeneratorTileEntity te = ((RadioisotopicGeneratorTileEntity) world.getTileEntity(x, y, z));
-
-		te.setStatus(!te.isOn());
 
 		return true;
 
@@ -68,8 +70,9 @@ public class RadioisotopicGenerator extends BlockContainer {
 
 	@Override
 	public void onBlockDestroyedByPlayer(World w, int x, int y, int z, int meta) {
+		if (w.isRemote)
+			return;
 		w.setBlock(x, y + 1, z, Blocks.air);
-		super.onBlockDestroyedByPlayer(w, x, y, z, meta);// TODO: Not dropping
-															// self
+		super.onBlockDestroyedByPlayer(w, x, y, z, meta);
 	}
 }

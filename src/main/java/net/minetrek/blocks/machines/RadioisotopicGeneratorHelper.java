@@ -34,6 +34,8 @@ public class RadioisotopicGeneratorHelper extends Block {
 
 	@Override
 	public void onBlockDestroyedByPlayer(World w, int x, int y, int z, int meta) {
+		if (w.isRemote)
+			return;
 		w.func_147480_a(x, y - 1, z, true);
 	}
 
