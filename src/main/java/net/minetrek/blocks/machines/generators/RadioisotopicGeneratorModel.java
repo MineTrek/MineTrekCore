@@ -1,4 +1,4 @@
-package net.minetrek.blocks.machines;
+package net.minetrek.blocks.machines.generators;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

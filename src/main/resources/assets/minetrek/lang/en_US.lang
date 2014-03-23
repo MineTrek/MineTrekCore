@@ -3,6 +3,7 @@ tile.chromiteOre.name=Chromite Ore
 tile.copperOre.name=Copper Ore
 tile.dilithiumOre.name=Dilithium Ore
 tile.duraniumOre.name=Duranium Ore
+tile.dolamideOre.name=Dolamide Ore
 tile.invisibleOre.name=Invisible Ore
 tile.iridiumOre.name=Iridium Ore
 tile.nitriumOre.name=Nitrium Ore
@@ -22,6 +23,8 @@ tile.phaserDrill.name=Phaser Drill
 tile.radioisotopicGenerator.name=Radioisotopic Generator
 tile.replicator.name=Replicator
 tile.refinery.name=Refinery
+tile.dolamideReactor.name=Dolamide Reactor
+tile.daboWheel.name=Dabo Wheel
 
 tile.electricCable.name=Electric Cable
 
@@ -63,6 +66,7 @@ item.tungstenDust.name=Tungsten Dust
 item.dilithiumCrystal.name=Dilithium Crystal
 item.rubble.name=Rubble
 item.smallAntimatterStorage.name=Small Antimatter Storage
+item.refinedDolamide.name=Refined Dolamide
 
 item.phaser.name=Phaser
 

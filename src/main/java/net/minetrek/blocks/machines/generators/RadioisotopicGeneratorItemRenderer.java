@@ -1,4 +1,4 @@
-package net.minetrek.blocks.machines;
+package net.minetrek.blocks.machines.generators;
 
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;

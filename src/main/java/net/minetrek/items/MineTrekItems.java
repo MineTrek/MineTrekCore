@@ -49,6 +49,7 @@ public class MineTrekItems {
 	public static Item titanium_dust;
 	public static Item tritanium_dust;
 	public static Item tungsten_dust;
+	public static Item refined_dolamide;
 
 	public static void initialize(CreativeTabs tab) {
 
@@ -93,6 +94,9 @@ public class MineTrekItems {
 		// Others
 		rubble = new Rubble().setCreativeTab(tab);
 		GameRegistry.registerItem(rubble, "rubble");
+
+		refined_dolamide = new RefinedDolamide().setCreativeTab(tab);
+		GameRegistry.registerItem(refined_dolamide, "refinedDolamide");
 
 		dilithium_crystal = new DilithiumCrystal().setCreativeTab(tab);
 		GameRegistry.registerItem(dilithium_crystal, "dilithiumCrystal");

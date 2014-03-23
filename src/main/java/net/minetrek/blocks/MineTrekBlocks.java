@@ -5,9 +5,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.Fluid;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.PhaserDrill;
-import net.minetrek.blocks.machines.RadioisotopicGenerator;
-import net.minetrek.blocks.machines.RadioisotopicGeneratorHelper;
 import net.minetrek.blocks.machines.Refinery;
+import net.minetrek.blocks.machines.generators.DolamideReactor;
+import net.minetrek.blocks.machines.generators.RadioisotopicGenerator;
+import net.minetrek.blocks.machines.generators.RadioisotopicGeneratorHelper;
 import net.minetrek.blocks.machines.replicator.Replicator;
 import net.minetrek.blocks.power.ElectricCable;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -31,6 +32,7 @@ public class MineTrekBlocks {
 	public static Block replicator;
 	public static Block dabo_wheel;
 	public static Block radioisotopic_generator_helper;
+	public static Block dolamide_reactor;
 
 	/**
 	 * Initializes non-ore blocks
@@ -64,6 +66,9 @@ public class MineTrekBlocks {
 
 		radioisotopic_generator_helper = new RadioisotopicGeneratorHelper();
 		GameRegistry.registerBlock(radioisotopic_generator_helper, "radioisotopicGeneratorHelper");
+
+		dolamide_reactor = new DolamideReactor().setCreativeTab(ct);
+		GameRegistry.registerBlock(dolamide_reactor, "dolamideReactor");
 
 		phaser_drill = new PhaserDrill().setCreativeTab(ct);
 		GameRegistry.registerBlock(phaser_drill, "phaserDrill");

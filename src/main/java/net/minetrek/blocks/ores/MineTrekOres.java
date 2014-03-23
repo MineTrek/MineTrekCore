@@ -21,6 +21,7 @@ public class MineTrekOres {
 	public static Ore uranium_ore;
 	public static Ore invisible_ore;
 	public static Ore nitrium_ore;
+	public static Ore dolamide_ore;
 
 	/**
 	 * Initializes ore blocks
@@ -52,6 +53,9 @@ public class MineTrekOres {
 
 		copper_ore = new CopperOre();
 		registerOre(copper_ore, ct, gen);
+
+		dolamide_ore = new DolamideOre();
+		registerOre(dolamide_ore, ct, gen);
 
 		iridium_ore = new IridiumOre();
 		registerOre(iridium_ore, ct, gen);
