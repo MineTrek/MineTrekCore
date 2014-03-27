@@ -7,8 +7,6 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityPhaserBolt extends EntityThrowable {
 
@@ -40,22 +38,22 @@ public class EntityPhaserBolt extends EntityThrowable {
 
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
-		
+
 		this.setDead();
-		
-		if(!worldObj.isRemote)
+
+		if (worldObj.isRemote)
 			return;
-		
+
 		if (mop.entityHit != null)
 			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10);
 		else {
 			Block b = worldObj.getBlock(mop.blockX, mop.blockY, mop.blockZ);
 			float hd = b.getBlockHardness(worldObj, mop.blockX, mop.blockY, mop.blockZ);
-			if (hd < 4.0F && hd > -1){
+			if (hd < 4.0F && hd > -1) {
 				worldObj.func_147480_a(mop.blockX, mop.blockY, mop.blockZ, true);
 			}
 		}
-		
+
 	}
 
 	@Override
