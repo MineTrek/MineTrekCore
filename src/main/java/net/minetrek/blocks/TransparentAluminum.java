@@ -2,6 +2,7 @@ package net.minetrek.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.world.IBlockAccess;
 
 public class TransparentAluminum extends Block {
 
@@ -28,6 +29,11 @@ public class TransparentAluminum extends Block {
 	@Override
 	public int getRenderBlockPass() {
 		return 1;
+	}
+
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l) {
+		return !iblockaccess.getBlock(i, j, k).equals(this);
 	}
 
 }
