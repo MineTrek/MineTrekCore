@@ -7,6 +7,9 @@ import net.minetrek.MineTrek;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
+import net.minetrek.blocks.machines.generators.RadioisotopicGeneratorContainer;
+import net.minetrek.blocks.machines.generators.RadioisotopicGeneratorGui;
+import net.minetrek.blocks.machines.generators.RadioisotopicGeneratorTileEntity;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
@@ -29,6 +32,10 @@ public class GuiHandler implements IGuiHandler {
 			if (entity != null && entity instanceof LaserElectronManipulatorTileEntity)
 				return new LaserElectronManipulatorContainer(player.inventory, (LaserElectronManipulatorTileEntity) entity);
 			break;
+		case RADIOISOTOPIC_GENERATOR_GUI:
+			if (entity != null && entity instanceof RadioisotopicGeneratorTileEntity)
+				return new RadioisotopicGeneratorContainer(player.inventory, (RadioisotopicGeneratorTileEntity) entity);
+			break;
 		}
 
 		return null;
@@ -41,6 +48,10 @@ public class GuiHandler implements IGuiHandler {
 		case LASER_ELECTRON_MANIPULATOR_GUI:
 			if (entity != null && entity instanceof LaserElectronManipulatorTileEntity)
 				return new LaserElectronManipulatorGui(player.inventory, (LaserElectronManipulatorTileEntity) entity);
+			break;
+		case RADIOISOTOPIC_GENERATOR_GUI:
+			if (entity != null && entity instanceof RadioisotopicGeneratorTileEntity)
+				return new RadioisotopicGeneratorGui(player.inventory, (RadioisotopicGeneratorTileEntity) entity);
 			break;
 		}
 

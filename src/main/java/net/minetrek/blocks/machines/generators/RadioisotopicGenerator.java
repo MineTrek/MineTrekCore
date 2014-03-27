@@ -73,6 +73,5 @@ public class RadioisotopicGenerator extends BlockContainer {
 		if (w.isRemote)
 			return;
 		w.setBlock(x, y + 1, z, Blocks.air);
-		super.onBlockDestroyedByPlayer(w, x, y, z, meta);
 	}
 }
