@@ -15,7 +15,7 @@ public class Phaser extends Item {
 	public Phaser() {
 		setMaxStackSize(1);
 		setUnlocalizedName("phaser");
-		setTextureName("minetrek:phaserDefault");
+		setTextureName("minetrek:phaserAnimated");
 		setMaxDamage(100);
 	}
 
