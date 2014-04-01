@@ -4,12 +4,10 @@ import universalelectricity.api.energy.IEnergyNetwork;
 import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.Event;
 
-public class NetworkEvent extends Event
-{
+public class NetworkEvent extends Event {
 	public final IEnergyNetwork network;
 
-	public NetworkEvent(IEnergyNetwork network)
-	{
+	public NetworkEvent(IEnergyNetwork network) {
 		this.network = network;
 	}
 
@@ -20,14 +18,12 @@ public class NetworkEvent extends Event
 	 * 
 	 */
 	@Cancelable
-	public static class EnergyProduceEvent extends NetworkEvent
-	{
-		private Object source;
-		private long amount;
-		private boolean doReceive;
+	public static class EnergyProduceEvent extends NetworkEvent {
+		private final Object source;
+		private final long amount;
+		private final boolean doReceive;
 
-		public EnergyProduceEvent(IEnergyNetwork network, Object source, long amount, boolean doReceive)
-		{
+		public EnergyProduceEvent(IEnergyNetwork network, Object source, long amount, boolean doReceive) {
 			super(network);
 			this.source = source;
 			this.amount = amount;
@@ -42,10 +38,8 @@ public class NetworkEvent extends Event
 	 * 
 	 */
 	@Cancelable
-	public static class EnergyUpdateEvent extends NetworkEvent
-	{
-		public EnergyUpdateEvent(IEnergyNetwork network)
-		{
+	public static class EnergyUpdateEvent extends NetworkEvent {
+		public EnergyUpdateEvent(IEnergyNetwork network) {
 			super(network);
 		}
 	}

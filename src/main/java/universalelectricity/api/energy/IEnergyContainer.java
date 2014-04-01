@@ -7,8 +7,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  * 
  * @author Calclavia
  */
-public interface IEnergyContainer
-{
+public interface IEnergyContainer {
 	/**
 	 * Sets the amount of energy this unit stored.
 	 * 

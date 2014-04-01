@@ -9,25 +9,29 @@ import universalelectricity.api.net.IUpdate;
  * 
  * @author Calclavia
  */
-public interface IEnergyNetwork extends INodeNetwork<IEnergyNetwork, IConductor, Object>, IUpdate
-{
+public interface IEnergyNetwork extends INodeNetwork<IEnergyNetwork, IConductor, Object>, IUpdate {
 	/**
 	 * Produces power to the energy network.
 	 * 
-	 * @param conductor - The conductor that is producing into the energy.
-	 * @param side - The direction the source is producing out towards.
-	 * @param receive - The amount that is produced.
+	 * @param conductor
+	 *            - The conductor that is producing into the energy.
+	 * @param side
+	 *            - The direction the source is producing out towards.
+	 * @param receive
+	 *            - The amount that is produced.
 	 * @return The amount that was accepted by the network.
 	 */
 	public long produce(IConductor conductor, ForgeDirection from, long amount, boolean doProduce);
 
 	/**
-	 * @return The current buffer in the network that is going sent to all energy handlers.
+	 * @return The current buffer in the network that is going sent to all
+	 *         energy handlers.
 	 */
 	public long getBuffer();
 
 	/**
-	 * @return The last buffer in the network that was sent to all energy handlers.
+	 * @return The last buffer in the network that was sent to all energy
+	 *         handlers.
 	 */
 	public long getLastBuffer();
 
@@ -42,16 +46,16 @@ public interface IEnergyNetwork extends INodeNetwork<IEnergyNetwork, IConductor,
 	public float getResistance();
 
 	/**
-	 * Used by conductors to load their internal buffers to the network. This should be called when
-	 * reading NBT data.
+	 * Used by conductors to load their internal buffers to the network. This
+	 * should be called when reading NBT data.
 	 * 
 	 * @param conductor
 	 */
 	public long getBufferOf(IConductor conductor);
 
 	/**
-	 * Used by conductors to load their internal buffers to the network. This should be called when
-	 * writing NBT data.
+	 * Used by conductors to load their internal buffers to the network. This
+	 * should be called when writing NBT data.
 	 * 
 	 * @param conductor
 	 */

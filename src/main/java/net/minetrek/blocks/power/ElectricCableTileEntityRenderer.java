@@ -45,7 +45,9 @@ public class ElectricCableTileEntityRenderer extends TileEntitySpecialRenderer {
 			OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, l1, l2);
 
 			GL11.glPushMatrix();
-			GL11.glTranslatef(0.5F, -0.5F, 0.5F);
+			GL11.glTranslatef(0F, 1F, 0F);
+			GL11.glRotatef(180F, 0F, 0F, 1F);
+			GL11.glTranslatef(-0.5F, -0.5F, 0.5F);
 
 			this.bindTexture(new ResourceLocation("minetrek", "textures/blocks/electricCable.png"));
 

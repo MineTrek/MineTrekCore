@@ -154,7 +154,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	}
 
 	@Override
-	public boolean canConnect(ForgeDirection arg0) {
+	public boolean canConnect(ForgeDirection arg0, Object o) {
 		return true;
 	}
 

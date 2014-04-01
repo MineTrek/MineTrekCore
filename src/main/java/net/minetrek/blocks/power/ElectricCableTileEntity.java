@@ -9,7 +9,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import universalelectricity.api.CompatibilityModule;
 import universalelectricity.api.energy.IEnergyInterface;
 import universalelectricity.api.vector.Vector3;
 
@@ -23,7 +22,7 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 	}
 
 	@Override
-	public boolean canConnect(ForgeDirection direction) {
+	public boolean canConnect(ForgeDirection direction, Object o) {
 		if (direction == null || direction.equals(ForgeDirection.UNKNOWN)) {
 			return false;
 		}
@@ -88,6 +87,7 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 	}
 
 	public void checkConnections(World w, int x, int y, int z) {
+		attachedSides.clear();
 		if (testConnect(ForgeDirection.NORTH))
 			attachedSides.add(ForgeDirection.NORTH);
 		if (testConnect(ForgeDirection.SOUTH))
@@ -109,8 +109,8 @@ public class ElectricCableTileEntity extends TileEntity implements IEnergyInterf
 	private boolean testConnect(ForgeDirection direction) {
 		TileEntity tileEntity = new Vector3(this).translate(direction).getTileEntity(this.worldObj);
 
-		if (tileEntity != null) {
-			return CompatibilityModule.canConnect(tileEntity, direction.getOpposite());
+		if (tileEntity != null && tileEntity instanceof IEnergyInterface) {
+			return ((IEnergyInterface) tileEntity).canConnect(direction.getOpposite(), this);
 		}
 
 		return false;
