@@ -10,8 +10,10 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
+import universalelectricity.api.energy.IEnergyInterface;
 
-public class RadioisotopicGeneratorTileEntity extends TileEntity implements ISidedInventory {
+public class RadioisotopicGeneratorTileEntity extends TileEntity implements ISidedInventory, IEnergyInterface {
 
 	private boolean status;
 	private final ItemStack[] inventory;
@@ -165,6 +167,23 @@ public class RadioisotopicGeneratorTileEntity extends TileEntity implements ISid
 	public static void addRecipe(ItemStack in, int out) {
 		recipeIngredients.add(in);
 		recipeProducts.add(out);
+	}
+
+	@Override
+	public boolean canConnect(ForgeDirection from, Object source) {
+		return true;
+	}
+
+	@Override
+	public long onReceiveEnergy(ForgeDirection from, long receive, boolean doReceive) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public long onExtractEnergy(ForgeDirection from, long extract, boolean doExtract) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

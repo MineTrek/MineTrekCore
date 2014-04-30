@@ -1,7 +1,7 @@
 [
 {
   "modid": "minetrek",
-  "name": "Mine Trek",
+  "name": "MineTrek",
   "description": "To go where no Steve has ever gone.... before",
   "version": "${version}",
   "mcversion": "${mcversion}",
